@@ -1,0 +1,9 @@
+.Stripe {
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+  transform: skewY(-12deg);
+  transform-origin: 0;
+  position: absolute;
+  z-index: -1;
+}
