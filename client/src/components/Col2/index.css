@@ -1,0 +1,5 @@
+@media (max-width: 500px) {
+  .Col-2-image img {
+    max-width: 100% !important;
+  }
+}

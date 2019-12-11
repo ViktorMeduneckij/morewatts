@@ -7,7 +7,8 @@ import Participants from "../../Event/subcomponents/Participants";
 
 import { DESCRIPTION } from "./description.js";
 
-const Strength = ({ data }) => {
+const Road = ({ data }) => {
+  console.log(data);
   return (
     data && (
       <div className="container--lg">
@@ -48,7 +49,7 @@ const Strength = ({ data }) => {
   );
 };
 
-Strength.propTypes = {
+Road.propTypes = {
   data: PropTypes.shape({
     allDay: PropTypes.bool,
     city: PropTypes.string,
@@ -65,4 +66,4 @@ Strength.propTypes = {
   }),
 };
 
-export default Strength;
+export default Road;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 
 import athleteIcon from "../../../images/cyclist.svg";
 import LoadingSpinner from "../../LoadingSpinner";
@@ -8,6 +9,9 @@ const Participants = ({ eventId }) => {
   const [participants, setParticipants] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUserSubscribed, setIsUserSubscribed] = useState(false);
+  const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
+  const unsubscribeUrl = `/api/v.1.0/event/unsubscribe/${eventId}/`;
+
   const userName = "Viktor Meduneckij";
 
   useEffect(() => {
@@ -37,14 +41,16 @@ const Participants = ({ eventId }) => {
 
   const handleParticipantsClick = () => {
     if (!isUserSubscribed) {
-      triggerSubscribe();
+      triggerSubscribe(subscribeUrl);
+    } else {
+      triggerSubscribe(unsubscribeUrl);
     }
   };
 
-  const triggerSubscribe = () => {
+  const triggerSubscribe = url => {
     if (isLoading === false) {
       setIsLoading(true);
-      fetch(`/api/v.1.0/event/subscribe/${eventId}/`, {
+      fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -58,7 +64,7 @@ const Participants = ({ eventId }) => {
           if (!response.ok) {
             setTimeout(() => {
               setIsLoading(false);
-            }, 3000);
+            }, 1000);
             return;
           }
           return response.json();
@@ -67,13 +73,18 @@ const Participants = ({ eventId }) => {
           if (!data) {
             setTimeout(() => {
               setIsLoading(false);
-            }, 3000);
+            }, 1000);
             return;
           }
-          setParticipants(data.subscribers);
           setTimeout(() => {
             setIsLoading(false);
-          }, 3000);
+            setParticipants(data.subscribers);
+            if (url === subscribeUrl) {
+              setIsUserSubscribed(true);
+            } else {
+              setIsUserSubscribed(false);
+            }
+          }, 1000);
         });
     }
   };
@@ -93,10 +104,10 @@ const Participants = ({ eventId }) => {
         ))}
         {!isLoading ? (
           <button
-            className="success mt-3"
+            className={cx("mt-3 mw2", isUserSubscribed ? "warning" : "success")}
             onClick={() => handleParticipantsClick()}
           >
-            Prisijungsiu
+            {isUserSubscribed ? "Apsigalvojau" : "Prisijungsiu"}
           </button>
         ) : (
           <LoadingSpinner />

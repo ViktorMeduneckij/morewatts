@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 
+import "./index.css";
+
 const Col2 = ({ values }) => {
   const { className, leftImg, rightTitle, rightText } = values;
   return (
@@ -12,7 +14,7 @@ const Col2 = ({ values }) => {
       )}
     >
       {leftImg && (
-        <div className="flex-1">
+        <div className="flex-1 Col-2-image">
           <img
             className="Col2-image"
             src={require(`../../images/${leftImg.src}`)}

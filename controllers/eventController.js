@@ -38,16 +38,18 @@ module.exports.subscribe = (req, res) => {
   );
 };
 
-const unsubscribeEvent = (req, res) => {
-  eventModel.event
-    .findByIdAndUpdate(
-      req.params.id,
-      { $pull: { subscribers: { name: req.params.name } } },
-      function(err, model) {
-        console.log(err);
+module.exports.unsubscribe = (req, res) => {
+  const subscriber = { name: req.body.userName };
+  eventModel.event.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $pull: { subscribers: subscriber } },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
       }
-    )
-    .then(result => {
-      res.status(200).send("Subscribe event happened");
-    });
+    }
+  );
 };

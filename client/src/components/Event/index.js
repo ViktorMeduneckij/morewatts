@@ -3,6 +3,7 @@ import { canUseDOM } from "exenv";
 
 import Header from "../Header";
 import Strength from "../EventPool/Strength";
+import Road from "../EventPool/Road";
 import Stripe from "../Stripe";
 
 const Event = () => {
@@ -37,6 +38,9 @@ const Event = () => {
     switch (type) {
       case "strength":
         return <Strength data={data} />;
+
+      case "road":
+        return <Road data={data} />;
 
       default:
         return <Strength data={data} />;

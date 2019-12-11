@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.css";
 import { navigate } from "@reach/router";
 
 const Header = () => {
@@ -21,7 +20,7 @@ const Header = () => {
               textAlign: "center",
             }}
           >
-            MoreWatts training
+            MoreWatts treniruotės
           </p>
         </div>
       </div>

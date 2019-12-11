@@ -7,6 +7,8 @@ import { MW_MEMBERS } from "../../constants";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+import "./index.css";
+
 const DesktopCalendar = () => {
   const [data, setData] = useState(false);
   const localizer = momentLocalizer(moment);
@@ -57,15 +59,27 @@ const DesktopCalendar = () => {
   };
 
   const handleEventClick = event => {
-    console.log(event);
     navigate(`/event/${event._id}`);
   };
 
   const eventStyleGetter = (event, start, end, isSelected) => {
-    if (event.isMw === true) {
-      return {
-        className: "mw-event",
-      };
+    switch (event.type) {
+      case "strength":
+        return {
+          className: "strength-event",
+        };
+      case "road":
+        return {
+          className: "road-event",
+        };
+      case "mtb":
+        return {
+          className: "strength-event",
+        };
+      default:
+        return {
+          className: "general-event",
+        };
     }
   };
 

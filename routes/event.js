@@ -6,6 +6,8 @@ module.exports = function(app) {
   //   app.post("/submit-create-event", eventController.submitEventForm);
   app.get("/api/v.1.0/event/:id", eventController.getEvent);
   app.post("/api/v.1.0/event/subscribe/:id", eventController.subscribe);
+  app.post("/api/v.1.0/event/unsubscribe/:id", eventController.unsubscribe);
+
   //   app.post("/submit-edit-event/:id", eventController.submitEventEditForm);
   //   app.get("/api/v.1.0/event/delete/:id", eventController.deleteEvent);
   //   app.post("/api/v.1.0/event/wrong-response", eventController.wrongResponse);
