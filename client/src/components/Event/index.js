@@ -4,7 +4,6 @@ import { canUseDOM } from "exenv";
 import Header from "../Header";
 import Strength from "../EventPool/Strength";
 import Road from "../EventPool/Road";
-import Stripe from "../Stripe";
 
 const Event = () => {
   const [data, setData] = useState(false);
@@ -51,7 +50,6 @@ const Event = () => {
     data && (
       <>
         <Header />
-        <Stripe background="linear-gradient(150deg,#FDB713 15%,#F5E663 70%,#a6ffcb 94%)" />
         {renderEvent()}
       </>
     )

@@ -1,24 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { isMobile } from "react-device-detect";
 
 import Location from "../../Event/subcomponents/Location";
 import Type from "../../Event/subcomponents/Type";
 import Participants from "../../Event/subcomponents/Participants";
+import Stripe from "../../Stripe";
 
 import { DESCRIPTION } from "./description.js";
 
+const salesTrefkeBg = require("../../../images/salesTrefke.png");
+
 const Strength = ({ data }) => {
+  const heroStyle = {
+    backgroundImage: `url(${salesTrefkeBg})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    height: isMobile ? "250px" : "500px",
+  };
+
   return (
     data && (
-      <div className="container--lg">
-        <div className="Strength">
-          <div className="Strength-Banner">
-            <img
-              src={require("../../../images/salesTrefke.png")}
-              alt=""
-              style={{ maxHeight: "450px", boxShadow: "0px 0px 15px #fff" }}
-              className="mx-auto"
-            />
+      <>
+        <Stripe background="linear-gradient(150deg,#FDB713 15%,#F5E663 70%,#a6ffcb 94%)" />
+        <div className="container--lg">
+          <div className="Strength">
+            <div className="Strength-Banner" style={heroStyle}></div>
           </div>
           <h1 className="Strength-title text-center my-6">{data.title}</h1>
           <div className="Strength-info flex flex-col lg:flex-row">
@@ -43,7 +51,7 @@ const Strength = ({ data }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     )
   );
 };
@@ -58,7 +66,7 @@ Strength.propTypes = {
     level: PropTypes.string,
     start: PropTypes.string,
     start_location: PropTypes.string,
-    subscribers: PropTypes.arrayOf(),
+    subscribers: PropTypes.arrayOf(PropTypes.shape({})),
     title: PropTypes.string,
     type: PropTypes.string,
     _id: PropTypes.string,
