@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import strengthIcon from "../../../images/strength.svg";
 import roadIcon from "../../../images/racing.svg";
+import mtbIcon from "../../../images/mtb.svg";
+import indoorIcon from "../../../images/stakles.svg";
 
 const Location = ({ type }) => {
   const resolveIcon = () => {
@@ -11,6 +13,10 @@ const Location = ({ type }) => {
         return strengthIcon;
       case "road":
         return roadIcon;
+      case "mtb":
+        return mtbIcon;
+      case "indoor":
+        return indoorIcon;
       default:
         return roadIcon;
     }

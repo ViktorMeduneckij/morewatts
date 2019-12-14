@@ -2,3 +2,11 @@
   background-color: rgb(245, 230, 99);
   color: gray;
 }
+
+.mtb-event {
+  background-color: #12b53b;
+}
+
+.indoor-event {
+  background-color: #f788ab;
+}

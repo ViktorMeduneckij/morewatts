@@ -74,7 +74,11 @@ const DesktopCalendar = () => {
         };
       case "mtb":
         return {
-          className: "strength-event",
+          className: "mtb-event",
+        };
+      case "indoor":
+        return {
+          className: "indoor-event",
         };
       default:
         return {

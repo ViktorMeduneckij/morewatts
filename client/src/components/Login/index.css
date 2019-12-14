@@ -1,0 +1,11 @@
+.Login-html,
+.Login-html body,
+.Login-html #root,
+.Login-html #root > div,
+.Login-html #root > div > div {
+  height: 100%;
+}
+
+.Login-html body {
+  padding-bottom: 0 !important;
+}

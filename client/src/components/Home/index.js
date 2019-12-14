@@ -8,7 +8,12 @@ import Hero from "../Hero";
 const Home = () => (
   <>
     <div className="container--xl">
-      <Hero src="https://i.imgur.com/maEGrIJ.jpg" overlay />
+      <Hero
+        src="https://i.imgur.com/maEGrIJ.jpg"
+        overlay
+        title="MoreWatts treniruotės"
+        subtitle="Siek savo tikslų su bendraminčiais"
+      />
     </div>
     <Header />
     <div>

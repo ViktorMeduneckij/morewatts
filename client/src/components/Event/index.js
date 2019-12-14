@@ -4,6 +4,8 @@ import { canUseDOM } from "exenv";
 import Header from "../Header";
 import Strength from "../EventPool/Strength";
 import Road from "../EventPool/Road";
+import Mtb from "../EventPool/Mtb";
+import Indoor from "../EventPool/Indoor";
 
 const Event = () => {
   const [data, setData] = useState(false);
@@ -34,6 +36,8 @@ const Event = () => {
   };
 
   const renderEvent = () => {
+    console.log(type);
+
     switch (type) {
       case "strength":
         return <Strength data={data} />;
@@ -41,13 +45,20 @@ const Event = () => {
       case "road":
         return <Road data={data} />;
 
+      case "mtb":
+        return <Mtb data={data} />;
+
+      case "indoor":
+        return <Indoor data={data} />;
+
       default:
         return <Strength data={data} />;
     }
   };
 
   return (
-    data && (
+    data &&
+    type && (
       <>
         <Header />
         {renderEvent()}

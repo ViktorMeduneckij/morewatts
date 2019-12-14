@@ -91,17 +91,21 @@ const Participants = ({ eventId }) => {
 
   return (
     participants && (
-      <div>
-        {participants.map((sub, index) => (
-          <span key={index} className="athlete flex items-center my-2">
-            <img
-              src={athleteIcon}
-              alt=""
-              style={{ maxWidth: "40px", paddingRight: "5px" }}
-            />
-            <div className="whitespace-no-wrap">{sub.name}</div>
-          </span>
-        ))}
+      <div className="mt-4 lg:mt-0">
+        {participants.length > 0 &&
+          participants.map((sub, index) => (
+            <span key={index} className="athlete flex items-center my-2">
+              <img
+                src={athleteIcon}
+                alt=""
+                style={{ maxWidth: "40px", paddingRight: "5px" }}
+              />
+              <div className="whitespace-no-wrap">{sub.name}</div>
+            </span>
+          ))}
+        {participants.length <= 0 && (
+          <p className="text-gray-500">Būk pirmas prisijungęs</p>
+        )}
         {!isLoading ? (
           <button
             className={cx("mt-3 mw2", isUserSubscribed ? "warning" : "success")}
