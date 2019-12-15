@@ -29,7 +29,8 @@ const Login = () => {
   };
 
   const responseFacebook = response => {
-    if (!response) return null;
+    const isLoggedIn = Cookies.get("isLoggedIn");
+    if (!response || isLoggedIn) return null;
 
     Cookies.set("name", response.name);
     Cookies.set("email", response.email);
@@ -41,23 +42,25 @@ const Login = () => {
   return (
     <div className="relative ss" style={backgroundStyle}>
       <div
-        className="absolute flex overflow-hidden items-stretch"
+        className="absolute flex overflow-hidden md:items-stretch flex-col md:flex-row"
         style={contentStyle}
       >
         <div
-          className="p-5 text-white text-center"
+          className="p-2 md:p-5 text-white text-center text-sm"
           style={{
             maxWidth: "300px",
             backgroundColor: "rgba(66, 153, 225, 0.9)",
           }}
         >
-          <h1>Sveiki atvykę į MoreWatts treniruočių platformą!</h1>
-          <div className="pt-5">
+          <h1 className="text-base">
+            Sveiki atvykę į MoreWatts treniruočių platformą!
+          </h1>
+          <div className="md:pt-5">
             Mes naudojame Facebook prisijungimą, kad žinotume, kas esate.
           </div>
         </div>
         <div
-          className="px-5 flex items-center"
+          className="md:px-5 flex items-center"
           style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
         >
           <FacebookLogin

@@ -4,6 +4,7 @@ import DesktopCalendar from "../DesktopCalendar";
 import Header from "../Header";
 import Col2 from "../Col2";
 import Hero from "../Hero";
+import AdminToolbar from "../AdminToolbar";
 
 const Home = () => (
   <>
@@ -16,6 +17,7 @@ const Home = () => (
       />
     </div>
     <Header />
+    <AdminToolbar />
     <div>
       <DesktopCalendar />
     </div>
