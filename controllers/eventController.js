@@ -53,3 +53,34 @@ module.exports.unsubscribe = (req, res) => {
     }
   );
 };
+
+//Helper function to handle event form submit.
+module.exports.submitEventForm = (req, res, next) => {
+  const event = new eventModel.event({
+    title: req.body.title,
+    start: req.body.startDate,
+    end: req.body.endDate,
+    allDay: false,
+    type: req.body.type,
+    city: req.body.city,
+    level: req.body.level,
+    speed: req.body.speed,
+    start_location: req.body.startLocation,
+    distance: req.body.distance,
+    generalInfo: req.body.generalInfo,
+    subscribers: [],
+    markers: req.body.markers,
+    maxPeople: req.body.maxPpl,
+    isMw: req.body.isMw,
+  });
+
+  event.save(function(err) {
+    if (err) {
+      console.log(err);
+      res.status(422).send(err);
+      return;
+    } else {
+      res.send(200);
+    }
+  });
+};

@@ -36,8 +36,6 @@ const Event = () => {
   };
 
   const renderEvent = () => {
-    console.log(type);
-
     switch (type) {
       case "strength":
         return <Strength data={data} />;

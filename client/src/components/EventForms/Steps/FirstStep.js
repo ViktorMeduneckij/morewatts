@@ -37,13 +37,17 @@ const FirstStep = () => {
   };
 
   const renderExistingForm = () => {
-    if (existingEvent) {
-      navigate(`/new/existing-event/${existingEvent.id}`);
+    const targetEvent = events.find(item => (item.title = existingEvent));
+
+    if (targetEvent) {
+      navigate(`/new/existing-event/${targetEvent._id}`);
+    } else {
+      navigate(`/new/existing-event/${events[0]._id}`);
     }
   };
 
   return (
-    <div>
+    <div className="container--lg">
       <form className="flex flex-col text-center">
         <label className="my-4 cursor-pointer">Nauja treniruotė</label>
         <label className="cursor-pointer" onClick={loadExisting}>
@@ -51,14 +55,18 @@ const FirstStep = () => {
         </label>
         {events.length > 0 && (
           <>
-            <select onChange={() => setExistingEvent(item)}>
-              {events.map((item, index) => (
-                <option key={index}>{item.title}</option>
-              ))}
-            </select>
-            <button className="mw2 success mt-3" onClick={renderExistingForm}>
-              Toliau
-            </button>
+            <span>
+              <select onChange={e => setExistingEvent(e.target.value)}>
+                {events.map((item, index) => (
+                  <option key={index}>{item.title}</option>
+                ))}
+              </select>
+            </span>
+            <span>
+              <button className="mw2 success mt-3" onClick={renderExistingForm}>
+                Toliau
+              </button>
+            </span>
           </>
         )}
       </form>
