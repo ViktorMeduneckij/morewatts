@@ -41,8 +41,8 @@ const DesktopCalendar = () => {
       const eventStart = new Date(event.start);
       const eventEnd = new Date(event.end);
 
-      event.start = new Date(eventStart.setHours(eventStart.getHours() - 2));
-      event.end = new Date(eventEnd.setHours(eventEnd.getHours() - 2));
+      event.start = eventStart;
+      event.end = eventEnd;
     });
 
     // var tryMember = MW_MEMBERS.filter(member => member.name === userName);
@@ -87,6 +87,11 @@ const DesktopCalendar = () => {
     }
   };
 
+  const minTime = new Date();
+  minTime.setHours(8, 0, 0);
+  const maxTime = new Date();
+  maxTime.setHours(20, 0, 0);
+
   return (
     data && (
       <div className="DesktopCalendar container--lg">
@@ -96,8 +101,9 @@ const DesktopCalendar = () => {
           defaultView="week"
           views={["week"]}
           onSelectEvent={handleEventClick}
-          step={60}
           eventPropGetter={eventStyleGetter}
+          min={minTime}
+          max={maxTime}
         />
       </div>
     )

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
+import { navigate } from "@reach/router";
+
+import { Button } from "@material-ui/core";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const ExistingEventForm = () => {
   const [event, setEvent] = useState(false);
-  const [type, setType] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -30,22 +32,12 @@ const ExistingEventForm = () => {
         }
         data.subscribers = [];
         setEvent(data);
-        setType(data.type);
       });
   };
 
   const createEvent = () => {
-    const parsedStart = new Date(
-      startDate.setHours(startDate.getHours() + 2)
-    ).toISOString();
-    const parsedEnd = new Date(
-      endDate.setHours(endDate.getHours() + 2)
-    ).toISOString();
-
-    event.start = parsedStart;
-    event.end = parsedEnd;
-
-    setEvent(event);
+    event.start = new Date(startDate).toISOString();
+    event.end = new Date(endDate).toISOString();
 
     sendEvent();
   };
@@ -79,7 +71,7 @@ const ExistingEventForm = () => {
             return response.json();
           }
         }
-        this.props.history.push("/");
+        navigate("/");
       })
       .then(err => {
         if (!err || !err.errors) {
@@ -97,6 +89,15 @@ const ExistingEventForm = () => {
 
   return (
     <div className="flex flex-col container--lg">
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/event/add")}
+        >
+          Atgal viena žingsnį
+        </Button>
+      </div>
       <div className="mb-3 flex flex-col">
         <label className="font-bold">Pradžios laikas</label>
         <DatePicker

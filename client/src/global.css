@@ -60,6 +60,15 @@ button.warning:hover {
   background: #f58484;
 }
 
+button.general {
+  background: #498bf5;
+  text-shadow: 0 1px 3px rgba(25, 72, 148, 0.4);
+}
+
+.react-datepicker-popper {
+  z-index: 3;
+}
+
 @media (max-width: 640px) {
   button.mw2 {
     width: 100%;

@@ -36,7 +36,7 @@ const Login = () => {
     Cookies.set("email", response.email);
     Cookies.set("isLoggedIn", true);
 
-    // navigate(`/`);
+    navigate(`/`);
   };
 
   return (
