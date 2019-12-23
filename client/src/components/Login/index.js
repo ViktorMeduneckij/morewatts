@@ -43,6 +43,7 @@ const Login = () => {
     Cookies.set("isLoggedIn", true);
 
     navigate(`/`);
+    window.location.reload(false);
   };
 
   return (
