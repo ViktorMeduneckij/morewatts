@@ -30,7 +30,13 @@ const Login = () => {
 
   const responseFacebook = response => {
     const isLoggedIn = Cookies.get("isLoggedIn");
-    if (!response || isLoggedIn) return null;
+    if (
+      !response ||
+      response.status === "unknown" ||
+      response.name === "undefined"
+    ) {
+      return null;
+    }
 
     Cookies.set("name", response.name);
     Cookies.set("email", response.email);
