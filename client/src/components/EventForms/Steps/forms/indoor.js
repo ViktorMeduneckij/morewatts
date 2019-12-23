@@ -40,7 +40,7 @@ const Indoor = ({ type }) => {
       },
       body: JSON.stringify({
         title: title,
-        type: type,
+        type: "indoor",
         startDate: new Date(startTime).toISOString(),
         endDate: new Date(endTime).toISOString(),
         startLocation: location,

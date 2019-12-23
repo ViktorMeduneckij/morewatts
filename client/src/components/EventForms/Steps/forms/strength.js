@@ -40,7 +40,7 @@ const Strength = ({ type }) => {
       },
       body: JSON.stringify({
         title: title,
-        type: type,
+        type: "strength",
         startDate: new Date(startTime).toISOString(),
         endDate: new Date(endTime).toISOString(),
         startLocation: location,
