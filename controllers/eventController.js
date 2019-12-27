@@ -84,3 +84,37 @@ module.exports.submitEventForm = (req, res, next) => {
     }
   });
 };
+
+module.exports.deleteEvent = (req, res) => {
+  eventModel.event.findByIdAndDelete(req.params.id.trim(), (error, data) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(200);
+    }
+  });
+};
+
+module.exports.submitEventEditForm = (req, res, next) => {
+  eventModel.event.findOne({ _id: req.params.id.trim() }, function(err, event) {
+    (event.title = req.body.title),
+      (event.start = req.body.startDate),
+      (event.end = req.body.endDate),
+      (event.type = req.body.type),
+      (event.city = req.body.city),
+      (event.level = req.body.level),
+      (event.speed = req.body.speed),
+      (event.start_location = req.body.startLocation),
+      (event.distance = req.body.distance),
+      (event.generalInfo = req.body.generalInfo),
+      (event.maxPeople = req.body.maxPpl),
+      (event.isMw = req.body.isMw),
+      event.save(function(err, savedEvent) {
+        if (err) {
+          res.status(422).send(err);
+          return;
+        }
+        res.send(200);
+      });
+  });
+};

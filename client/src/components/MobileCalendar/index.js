@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import EventCard from "./EventCard";
+import emptyCalendar from "../../images/calendar.svg";
 
 const MobileCalendar = () => {
   const [data, setData] = useState(false);
@@ -31,6 +32,7 @@ const MobileCalendar = () => {
   const parseEvents = events => {
     const currentDate = new Date();
     let validEvents = [];
+    let sortedActivities = [];
 
     events.map(event => {
       const eventStart = new Date(event.start);
@@ -46,27 +48,33 @@ const MobileCalendar = () => {
       return false;
     });
 
-    setData(validEvents);
+    sortedActivities = validEvents.sort(function(a, b) {
+      if (a.start < b.start) return -1;
+      if (a.start > b.start) return 1;
+      return 0;
+    });
 
-    // var tryMember = MW_MEMBERS.filter(member => member.name === userName);
-
-    // if (tryMember.length < 1) {
-    //   events.map((event, i) => {
-    //     if (event.isMw === true) {
-    //       events.splice(i, 1);
-    //     }
-    //   });
-    // }
+    setData(sortedActivities);
   };
 
   return (
-    data && (
-      <div>
-        {data.map((item, index) => (
-          <EventCard key={index} event={item} />
-        ))}
-      </div>
-    )
+    <div>
+      {data ? (
+        data.map((item, index) => <EventCard key={index} event={item} />)
+      ) : (
+        <span className="text-center text-gray-500 font-medium text-xl">
+          <img
+            src={emptyCalendar}
+            alt=""
+            style={{ maxWidth: "100px" }}
+            className="mx-auto"
+          />
+          <p className="pt-4">
+            Kol kas treniruociu nera, patikrinkite ateityje
+          </p>
+        </span>
+      )}
+    </div>
   );
 };
 

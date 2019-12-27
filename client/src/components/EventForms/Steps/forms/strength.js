@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import {
   TextField,
@@ -6,11 +6,13 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Strength = ({ type }) => {
+const Strength = ({ isEdit, eventId }) => {
+  const [editData, setEditData] = useState(false);
   const [error, setError] = useState(false);
   const [startTime, setStartTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
@@ -18,6 +20,35 @@ const Strength = ({ type }) => {
   const [location, setLocation] = useState(false);
   const [description, setDescription] = useState(false);
   const [isMw, setIsMw] = useState(false);
+
+  const [submitUrl, setSubmitUrl] = useState("/submit-create-event");
+
+  useEffect(() => {
+    if (isEdit && !editData) {
+      fetch("/api/v.1.0/event/" + eventId)
+        .then(function(response) {
+          if (!response.ok) {
+            console.log("Failed to get single event.");
+            return;
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (!data) {
+            return;
+          }
+          setEditData(data);
+          setTitle(data.title);
+          setStartTime(new Date(data.start));
+          setEndTime(new Date(data.end));
+          setLocation(data.start_location);
+          setDescription(data.generalInfo);
+          setIsMw(data.isMw);
+
+          setSubmitUrl(`/submit-edit-event/${eventId}`);
+        });
+    }
+  });
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -32,7 +63,7 @@ const Strength = ({ type }) => {
       return;
     }
 
-    fetch("/submit-create-event", {
+    fetch(submitUrl, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -76,6 +107,7 @@ const Strength = ({ type }) => {
               variant="outlined"
               label="Pavadinimas"
               onChange={e => setTitle(e.target.value)}
+              value={title ? title : ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
@@ -124,6 +156,7 @@ const Strength = ({ type }) => {
               variant="outlined"
               label="Susitikimo vieta"
               onChange={e => setLocation(e.target.value)}
+              value={location ? location : ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
@@ -146,17 +179,23 @@ const Strength = ({ type }) => {
               rows={2}
               rowsMax={4}
               onChange={e => setDescription(e.target.value)}
+              value={description ? description : ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
             <Button variant="contained" color="primary" onClick={handleSubmit}>
-              Sukurti
+              {isEdit ? "Atnaujinti" : "Sukurti"}
             </Button>
           </div>
         </div>
       </form>
     </div>
   );
+};
+
+Strength.propTypes = {
+  isEdit: PropTypes.bool,
+  eventId: PropTypes.string,
 };
 
 export default Strength;

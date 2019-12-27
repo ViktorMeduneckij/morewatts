@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import EventForms from "./components/EventForms";
 import ExistingEventForm from "./components/EventForms/Steps/ExistingEventForm";
 import NewEvent from "./components/EventForms/Steps/NewEvent";
+import EditEvent from "./components/EventForms/Steps/EditEvent";
 
 import "./global.css";
 import "normalize.css";
@@ -30,6 +31,7 @@ const App = () => {
         <PrivateRoute as={EventForms} path="/event/add" />
         <PrivateRoute as={ExistingEventForm} path="/new/existing-event/:id" />
         <PrivateRoute as={NewEvent} path="/new-event/:type" />
+        <PrivateRoute as={EditEvent} path="/event/edit/:id" />
       </Router>
     </>
   );

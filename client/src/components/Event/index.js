@@ -6,6 +6,7 @@ import Strength from "../EventPool/Strength";
 import Road from "../EventPool/Road";
 import Mtb from "../EventPool/Mtb";
 import Indoor from "../EventPool/Indoor";
+import AdminToolbar from "../AdminToolbar";
 
 const Event = () => {
   const [data, setData] = useState(false);
@@ -59,6 +60,7 @@ const Event = () => {
     type && (
       <>
         <Header />
+        <AdminToolbar editEvent deleteEvent type={type} />
         {renderEvent()}
       </>
     )

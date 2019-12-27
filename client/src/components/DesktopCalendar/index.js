@@ -3,8 +3,6 @@ import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { navigate } from "@reach/router";
 
-import { MW_MEMBERS } from "../../constants";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import "./index.css";
@@ -44,16 +42,6 @@ const DesktopCalendar = () => {
       event.start = eventStart;
       event.end = eventEnd;
     });
-
-    // var tryMember = MW_MEMBERS.filter(member => member.name === userName);
-
-    // if (tryMember.length < 1) {
-    //   events.map((event, i) => {
-    //     if (event.isMw === true) {
-    //       events.splice(i, 1);
-    //     }
-    //   });
-    // }
 
     setData(events);
   };

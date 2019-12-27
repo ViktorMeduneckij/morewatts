@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { navigate } from "@reach/router";
 import moment from "moment";
 
 import duration from "../../../images/duration.svg";
 import subscriber from "../../../images/subscriber.svg";
-
 import salesBg from "../../../images/salesTrefke.png";
 import roadBg from "../../../images/salesTrefke.png";
 import mtbBg from "../../../images/salesTrefke.png";
 import indoorBg from "../../../images/stakliuTrefke.jpg";
-import { navigate } from "@reach/router";
+import mwBadge from "../../../images/mw_badge.png";
 
 const EventCard = ({ event }) => {
   const [bgImage, setBgImage] = useState(false);
@@ -58,7 +58,11 @@ const EventCard = ({ event }) => {
     var minutes = Math.floor(delta / 60) % 60;
     delta -= minutes * 60;
 
-    return `${hours}: ${minutes}`;
+    if (minutes === 0) {
+      return `${hours} val.`;
+    } else {
+      return `${hours}: ${minutes}`;
+    }
   };
 
   return (
@@ -72,6 +76,7 @@ const EventCard = ({ event }) => {
           backgroundPosition: "center",
           minHeight: "130px",
           borderBottom: "10px solid #fdb713",
+          zIndex: "0",
         }}
         onClick={() => navigate(`/event/${event._id}`)}
       >
@@ -82,6 +87,7 @@ const EventCard = ({ event }) => {
             borderTopLeftRadius: "4px",
             borderTopRightRadius: "4px",
             backgroundColor: "rgb(255, 255, 255, 0.8)",
+            zIndex: "2",
           }}
         >
           <div className="flex no-wrap">
@@ -116,6 +122,14 @@ const EventCard = ({ event }) => {
             </span>
           </div>
         </div>
+        {event.isMw && (
+          <span
+            className="absolute right-0"
+            style={{ zIndex: "1", top: "50%", transform: "translateY(-50%)" }}
+          >
+            <img src={mwBadge} alt="" />
+          </span>
+        )}
       </div>
     )
   );

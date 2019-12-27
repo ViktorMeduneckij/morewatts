@@ -5,13 +5,9 @@ import moment from "moment";
 import timeIcon from "../../../images/clock.svg";
 
 const TimeSpan = ({ start, end }) => {
-  const startTime = moment(start)
-    .utc()
-    .format("HH:mm");
+  const startTime = moment(start).format("HH:mm");
 
-  const endTime = moment(end)
-    .utc()
-    .format("HH:mm");
+  const endTime = moment(end).format("HH:mm");
 
   return (
     <div className="TimeSpan flex items-center mb-3">

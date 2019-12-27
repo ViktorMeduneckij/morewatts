@@ -31,7 +31,7 @@ const Home = () => {
         />
       </div>
       <Header />
-      <AdminToolbar />
+      <AdminToolbar addEvent />
       <div>{!isSmallDevice ? <DesktopCalendar /> : <MobileCalendar />}</div>
       <Col2
         values={{

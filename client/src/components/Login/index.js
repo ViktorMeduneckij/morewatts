@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { navigate } from "@reach/router";
 
 import backgroundImg from "../../images/background.jpeg";
+import { MW_MEMBERS } from "../../constants";
+
 import "./index.css";
 
 const Login = () => {
@@ -28,22 +30,24 @@ const Login = () => {
     backgroundPosition: "center",
   };
 
+  const attemptMwMember = name => {
+    MW_MEMBERS.forEach(item => {
+      if (item.name === name) {
+        Cookies.set("mw", true);
+      }
+    });
+  };
+
   const responseFacebook = response => {
-    const isLoggedIn = Cookies.get("isLoggedIn");
-    if (
-      !response ||
-      response.status === "unknown" ||
-      response.name === "undefined"
-    ) {
-      return null;
+    if (response.name && response.email && response.userID) {
+      Cookies.set("name", response.name);
+      Cookies.set("email", response.email);
+      Cookies.set("isLoggedIn", true);
+      attemptMwMember(response.name);
+
+      navigate(`/`);
+      window.location.reload(false);
     }
-
-    Cookies.set("name", response.name);
-    Cookies.set("email", response.email);
-    Cookies.set("isLoggedIn", true);
-
-    navigate(`/`);
-    window.location.reload(false);
   };
 
   return (

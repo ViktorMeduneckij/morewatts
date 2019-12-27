@@ -8,8 +8,10 @@ import TimeSpan from "../../Event/subcomponents/TimeSpan";
 import Complexity from "../../Event/subcomponents/Complexity";
 import { DESCRIPTION } from "./description.js";
 import Stripe from "../../Stripe";
+import { Tooltip } from "@material-ui/core";
 
 const IndoorTrefkeBg = require("../../../images/stakliuTrefke.jpg");
+import mwBadge from "../../../images/mw_badge_big.png";
 
 const Indoor = ({ data }) => {
   const heroStyle = {
@@ -26,7 +28,30 @@ const Indoor = ({ data }) => {
         <Stripe background="linear-gradient(150deg, #f788ab 15%, #f7dce5 70%, #d1d1d1 94%)" />
         <div className="container--lg">
           <div className="Indoor">
-            <div className="Indoor-Banner" style={heroStyle}></div>
+            <div className="Indoor-Banner relative">
+              <div style={heroStyle} />
+              {data.isMw && (
+                <Tooltip
+                  title={
+                    <span className="text-lg">
+                      Treniruotė skirta MoreWatts nariams.
+                    </span>
+                  }
+                  placement="left"
+                >
+                  <span
+                    className="absolute "
+                    style={{
+                      zIndex: "1",
+                      top: "20px",
+                      right: "20px",
+                    }}
+                  >
+                    <img src={mwBadge} alt="" style={{ maxHeight: "300px" }} />
+                  </span>
+                </Tooltip>
+              )}
+            </div>
             <h1 className="Indoor-title text-center my-6">{data.title}</h1>
             <div className="Indoor-info flex flex-col lg:flex-row">
               <div className="Indoor-info--left pr-6">

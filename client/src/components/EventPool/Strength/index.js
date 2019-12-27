@@ -6,6 +6,7 @@ import Location from "../../Event/subcomponents/Location";
 import Type from "../../Event/subcomponents/Type";
 import Participants from "../../Event/subcomponents/Participants";
 import Stripe from "../../Stripe";
+import TimeSpan from "../../Event/subcomponents/TimeSpan";
 
 import { DESCRIPTION } from "./description.js";
 
@@ -32,6 +33,7 @@ const Strength = ({ data }) => {
           <div className="Strength-info flex flex-col lg:flex-row">
             <div className="Strength-info--left pr-6">
               <Type type={data.type} />
+              <TimeSpan start={data.start} end={data.end} />
               <Location address={data.start_location} />
               <div className="generalInfo">
                 <p
