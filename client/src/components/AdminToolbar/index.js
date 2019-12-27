@@ -54,7 +54,7 @@ const AdminToolbar = ({ addEvent, editEvent, deleteEvent, type }) => {
       )}
       <Dialog
         open={deleteModalOpen}
-        onClose={() => setDeleteOpen(false)}
+        onClose={() => setDeleteModalOpen(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >

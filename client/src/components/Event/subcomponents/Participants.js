@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import Cookies from "js-cookie";
+import { Button } from "@material-ui/core";
 
 import athleteIcon from "../../../images/cyclist.svg";
 import LoadingSpinner from "../../LoadingSpinner";
 
-const Participants = ({ eventId }) => {
+const Participants = ({ eventId, isMw }) => {
   const [participants, setParticipants] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUserSubscribed, setIsUserSubscribed] = useState(false);
+  const [shouldDisplayMw, setShouldDisplayMw] = useState(null);
   const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
   const unsubscribeUrl = `/api/v.1.0/event/unsubscribe/${eventId}/`;
 
@@ -17,6 +20,10 @@ const Participants = ({ eventId }) => {
   useEffect(() => {
     if (!participants) {
       fetchParticipants();
+    }
+
+    if (isMw && shouldDisplayMw === null) {
+      setShouldDisplayMw(Cookies.get("mw"));
     }
   });
 
@@ -107,14 +114,24 @@ const Participants = ({ eventId }) => {
           <p className="text-gray-500">Būk pirmas prisijungęs</p>
         )}
         {!isLoading ? (
-          <button
-            className={cx("mt-3 mw2", isUserSubscribed ? "warning" : "success")}
-            onClick={() => handleParticipantsClick()}
-          >
-            {isUserSubscribed ? "Apsigalvojau" : "Prisijungsiu"}
-          </button>
+          <div className="mt-3">
+            <Button
+              variant="contained"
+              color={isUserSubscribed ? "secondary" : "primary"}
+              onClick={() => handleParticipantsClick()}
+              disabled={!shouldDisplayMw}
+              style={!shouldDisplayMw ? { pointerEvents: "none" } : {}}
+            >
+              {isUserSubscribed ? "Apsigalvojau" : "Prisijungsiu"}
+            </Button>
+          </div>
         ) : (
           <LoadingSpinner />
+        )}
+        {!shouldDisplayMw && (
+          <p className="mt-3 text-orange-600">
+            Ši treniruotė skirta tik MoreWatts nariams.
+          </p>
         )}
       </div>
     )
@@ -123,6 +140,7 @@ const Participants = ({ eventId }) => {
 
 Location.Participants = {
   eventId: PropTypes.string,
+  isMw: PropTypes.bool,
 };
 
 export default Participants;

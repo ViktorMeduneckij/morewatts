@@ -9,9 +9,9 @@ import Complexity from "../../Event/subcomponents/Complexity";
 import { DESCRIPTION } from "./description.js";
 import Stripe from "../../Stripe";
 import { Tooltip } from "@material-ui/core";
+import mwBadge from "../../../images/mw_badge_big.png";
 
 const IndoorTrefkeBg = require("../../../images/stakliuTrefke.jpg");
-import mwBadge from "../../../images/mw_badge_big.png";
 
 const Indoor = ({ data }) => {
   const heroStyle = {
@@ -73,7 +73,7 @@ const Indoor = ({ data }) => {
                 </div>
               </div>
               <div className="Indoor-info--right" style={{ minWidth: "250px" }}>
-                <Participants eventId={data._id} />
+                <Participants eventId={data._id} isMw={data.isMw} />
               </div>
             </div>
           </div>

@@ -29,48 +29,6 @@ a:hover {
   color: #fdb713;
 }
 
-button.mw2 {
-  color: #fff;
-  line-height: 40px;
-  padding: 0 14px;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  transition: all 0.2s ease;
-}
-
-button.success {
-  background: #3ecf8e;
-  text-shadow: 0 1px 3px rgba(36, 180, 126, 0.4);
-}
-
-button.success:hover {
-  background: #99e6c3;
-  transition: all 0.2s ease;
-}
-
-button.warning {
-  background: #f76d6d;
-  text-shadow: 0 1px 3px rgba(252, 63, 63, 0.4);
-}
-
-button.warning:hover {
-  background: #f58484;
-}
-
-button.general {
-  background: #498bf5;
-  text-shadow: 0 1px 3px rgba(25, 72, 148, 0.4);
-}
-
 .react-datepicker-popper {
   z-index: 3;
-}
-
-@media (max-width: 640px) {
-  button.mw2 {
-    width: 100%;
-  }
 }

@@ -34,6 +34,8 @@ const Login = () => {
     MW_MEMBERS.forEach(item => {
       if (item.name === name) {
         Cookies.set("mw", true);
+      } else {
+        Cookies.set("mw", false);
       }
     });
   };
