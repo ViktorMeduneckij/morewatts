@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import Cookies from "js-cookie";
@@ -17,17 +17,7 @@ const Participants = ({ eventId, isMw }) => {
 
   const userName = "Viktor Meduneckij";
 
-  useEffect(() => {
-    if (!participants) {
-      fetchParticipants();
-    }
-
-    if (isMw && shouldDisplayMw === null) {
-      setShouldDisplayMw(Cookies.get("mw"));
-    }
-  });
-
-  const fetchParticipants = () => {
+  const fetchParticipants = useCallback(() => {
     fetch("/api/v.1.0/event/" + eventId)
       .then(response => {
         if (!response.ok) {
@@ -44,7 +34,19 @@ const Participants = ({ eventId, isMw }) => {
           data.subscribers.find(item => item.name === userName) ? true : false
         );
       });
-  };
+  }, [eventId]);
+
+  useEffect(() => {
+    if (!participants) {
+      fetchParticipants();
+    }
+
+    if (isMw) {
+      setShouldDisplayMw(Cookies.get("mw"));
+    } else {
+      setShouldDisplayMw(true);
+    }
+  }, [participants, isMw, shouldDisplayMw, fetchParticipants]);
 
   const handleParticipantsClick = () => {
     if (!isUserSubscribed) {

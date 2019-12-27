@@ -69,12 +69,15 @@ const FirstStep = () => {
         Atgal namo
       </Button>
       <div className="flex flex-col text-center">
-        <button
-          className="my-4 mw2 general"
-          onClick={() => setShowEventTypes(true)}
-        >
-          Nauja treniruotė
-        </button>
+        <div className="my-3">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setShowEventTypes(true)}
+          >
+            Nauja treniruotė
+          </Button>
+        </div>
         {showEventTypes && (
           <>
             <span>
@@ -95,18 +98,28 @@ const FirstStep = () => {
               </FormControl>
             </span>
             <span>
-              <button className="mw2 success mt-3" onClick={proceedToNew}>
-                Toliau
-              </button>
+              <div className="my-3">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={proceedToNew}
+                >
+                  Toliau
+                </Button>
+              </div>
             </span>
           </>
         )}
-        <button
-          className="my-4 mw2 general"
-          onClick={() => setShowExisting(true)}
-        >
-          Egzistuojanti treniruotė
-        </button>
+        <div className="my-3">
+          <Button
+            variant="contained"
+            color="primary"
+            className="my-4"
+            onClick={() => setShowExisting(true)}
+          >
+            Egzistuojanti treniruotė
+          </Button>
+        </div>
         {showExisting && events.length > 0 && (
           <>
             <span>
@@ -127,14 +140,17 @@ const FirstStep = () => {
               </FormControl>
             </span>
             <span>
-              <button
-                className="mw2 success mt-3"
-                onClick={() =>
-                  navigate(`/new/existing-event/${selectedEvent._id}`)
-                }
-              >
-                Toliau
-              </button>
+              <div className="my-3">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() =>
+                    navigate(`/new/existing-event/${selectedEvent._id}`)
+                  }
+                >
+                  Toliau
+                </Button>
+              </div>
             </span>
           </>
         )}

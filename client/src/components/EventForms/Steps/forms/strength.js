@@ -45,6 +45,7 @@ const Strength = ({ isEdit, eventId }) => {
           setDescription(data.generalInfo);
           setIsMw(data.isMw);
 
+          console.log(data);
           setSubmitUrl(`/submit-edit-event/${eventId}`);
         });
     }

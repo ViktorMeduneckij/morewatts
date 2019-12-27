@@ -49,7 +49,7 @@ const Strength = ({ data }) => {
               </div>
             </div>
             <div className="Strength-info--right" style={{ minWidth: "250px" }}>
-              <Participants eventId={data._id} />
+              <Participants eventId={data._id} isMw={data.isMw} />
             </div>
           </div>
         </div>

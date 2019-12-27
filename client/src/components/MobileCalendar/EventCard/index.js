@@ -12,32 +12,39 @@ import mwBadge from "../../../images/mw_badge.png";
 
 const EventCard = ({ event }) => {
   const [bgImage, setBgImage] = useState(false);
+  const [eventColor, setEventColor] = useState(false);
 
   useEffect(() => {
-    if (!bgImage) {
-      resovleBgImg();
+    if (!bgImage && !eventColor) {
+      resovleEventProps();
     }
   });
 
-  const resovleBgImg = () => {
+  const resovleEventProps = () => {
     switch (event.type) {
       case "strength":
         setBgImage(salesBg);
+        setEventColor("#FDB713");
         break;
+
       case "road":
         setBgImage(roadBg);
+        setEventColor("#3F8EFC");
         break;
 
       case "mtb":
         setBgImage(mtbBg);
+        setEventColor("#12b53b");
         break;
 
       case "indoor":
         setBgImage(indoorBg);
+        setEventColor("#f788ab");
         break;
 
       default:
         setBgImage(salesBg);
+        setEventColor("#FDB713");
     }
   };
 
@@ -75,7 +82,7 @@ const EventCard = ({ event }) => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           minHeight: "130px",
-          borderBottom: "10px solid #fdb713",
+          borderBottom: `10px solid ${eventColor}`,
           zIndex: "0",
         }}
         onClick={() => navigate(`/event/${event._id}`)}
@@ -108,17 +115,17 @@ const EventCard = ({ event }) => {
               <img
                 src={duration}
                 alt=""
-                style={{ height: "15px", width: "15px" }}
+                style={{ height: "24px", width: "17px" }}
               />
-              <p className="pl-2">{countDuration()}</p>
+              <span className="pl-2">{countDuration()}</span>
             </span>
             <span className="font-bold flex items-center">
               <img
                 src={subscriber}
                 alt=""
-                style={{ height: "15px", width: "15px" }}
+                style={{ height: "24px", width: "17px" }}
               />
-              <p className="pl-2">{event.subscribers.length}</p>
+              <span className="pl-2">{event.subscribers.length}</span>
             </span>
           </div>
         </div>

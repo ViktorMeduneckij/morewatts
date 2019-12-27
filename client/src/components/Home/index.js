@@ -33,17 +33,58 @@ const Home = () => {
       <Header />
       <AdminToolbar addEvent />
       <div>{!isSmallDevice ? <DesktopCalendar /> : <MobileCalendar />}</div>
+      <div
+        className="container--lg py-4 mb-3"
+        style={{
+          boxShadow: "0 1px 0 0 rgba(0,0,0,.1)",
+        }}
+      >
+        <Col2
+          values={{
+            leftText: {
+              text: "1",
+              className: "text-4xl text-orange-500 text-center",
+            },
+            rightTitle: "Prisijunkite",
+            rightText: "Jūs jau tai padarėte, su tuo ir sveikiname!",
+          }}
+        />
+        <Col2
+          values={{
+            className: "py-5 bg-gray-200",
+            leftText: {
+              text: "2",
+              className: "text-4xl text-orange-500 text-center",
+            },
+            rightTitle: "Susiraskite jums patinkančią treniruotę",
+            rightText:
+              "Spauskite dalyvavimo mygtuką ir įsitikinkitę, jog esate sąraše.",
+          }}
+        />
+        <Col2
+          values={{
+            leftText: {
+              text: "3",
+              className: "text-4xl text-orange-500 text-center",
+            },
+            rightTitle: "Viskas!",
+            rightText:
+              "Džiaugiamės, kad prisijungėt! Iki susitikimo treniruotėje. Jei kartais persigalvosite, atsižymėkit iš sąrašo, tai mums padeda visuomet žinoti tikslų dalyviu skaičių ir taip palaikyti aukštą treniruočių kokybę.",
+          }}
+        />
+      </div>
       <Col2
         values={{
+          reverse: true,
           className: "container--lg",
           leftImg: {
             src: "logo.png",
             height: "400px",
             width: "400px",
           },
-          rightTitle: "MoreWatts treniruotes",
+          rightTitle: "MoreWatts treniruotės",
           rightText:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "Platformos tikslas- suvienyti dviratininkus ir padėti jiems tobulėti sporte. Vasaromis daugiau treniruočių yra orientuotos į dviratį, žiemą stengiamės siprėti visapusiškai bei palaikyti gerą bendrą fizinę formą. Treniruotės yra skirstomos pagal tipus: <ul class='my-2'><strong><li>Bendras fizinis (strength)</li><li>Plentas (Road)</li><li>MTB</li><li>Staklės (indoor)</li><li>Bendrinės (General)</li></strong></ul> Kai kurios treniruotės yra prieinamos tik MoreWatts nariams, jos yra pažymėtos MoreWatts ženklu. Tapti MoreWatts nariu gali kiekvienas, dėl narystės susisiekite su Donatu Šertvytčiu.",
         }}
       />
     </>

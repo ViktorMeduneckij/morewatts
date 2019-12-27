@@ -9,7 +9,8 @@ import Complexity from "../../Event/subcomponents/Complexity";
 import { DESCRIPTION } from "./description.js";
 import Stripe from "../../Stripe";
 import { Tooltip } from "@material-ui/core";
-import mwBadge from "../../../images/mw_badge_big.png";
+import mwBadgeBig from "../../../images/mw_badge_big.png";
+import mwBadge from "../../../images/mw_badge.png";
 
 const IndoorTrefkeBg = require("../../../images/stakliuTrefke.jpg");
 
@@ -47,7 +48,11 @@ const Indoor = ({ data }) => {
                       right: "20px",
                     }}
                   >
-                    <img src={mwBadge} alt="" style={{ maxHeight: "300px" }} />
+                    <img
+                      src={isMobile ? mwBadge : mwBadgeBig}
+                      alt=""
+                      style={{ maxHeight: "300px" }}
+                    />
                   </span>
                 </Tooltip>
               )}
