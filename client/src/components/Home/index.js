@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useEventListener from "@use-it/event-listener";
-
+import { isMobile } from "react-device-detect";
 import DesktopCalendar from "../DesktopCalendar";
 import MobileCalendar from "../MobileCalendar";
 import Header from "../Header";
@@ -8,6 +8,10 @@ import Col2 from "../Col2";
 import Hero from "../Hero";
 import AdminToolbar from "../AdminToolbar";
 import detectSmallDevice from "../../utils/detectSmallDevice";
+import Stripe from "../../components/Stripe";
+
+import hero from "../../images/1.png";
+import heroMobile from "../../images/1_mobile.png";
 
 const Home = () => {
   const [isSmallDevice, setIsSmallDevice] = useState(false);
@@ -22,16 +26,68 @@ const Home = () => {
 
   return (
     <>
+      <Stripe background="linear-gradient(#507eb1,#709dc7 10%,#dde9f5 38%,#eaf2f9 48%,#f6f9fc 62%)" />
       <div className="container--xl">
-        <Hero
-          src="https://i.imgur.com/maEGrIJ.jpg"
-          overlay
-          title="MoreWatts treniruotės"
-          subtitle="Siek savo tikslų su bendraminčiais"
-        />
+        {!isMobile ? <Hero src={hero} /> : <Hero src={heroMobile} />}
       </div>
-      <Header />
       <AdminToolbar addEvent />
+      <div className="hidden md:flex container--lg py-3">
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: "rgb(63, 142, 252)",
+            }}
+          ></span>
+          <span className="pl-2">Plentas (Road)</span>
+        </div>
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: "#12b53b",
+            }}
+          ></span>
+          <span className="pl-2">MTB</span>
+        </div>
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: "rgb(245, 230, 99)",
+            }}
+          ></span>
+          <span className="pl-2">Salė (Strength)</span>
+        </div>
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: "#f788ab",
+            }}
+          ></span>
+          <span className="pl-2">Staklės (Indoor)</span>
+        </div>
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: "#b80791",
+            }}
+          ></span>
+          <span className="pl-2">Kitos (General)</span>
+        </div>
+      </div>
       <div>{!isSmallDevice ? <DesktopCalendar /> : <MobileCalendar />}</div>
       <div
         className="container--lg py-4 mb-3"
@@ -42,7 +98,7 @@ const Home = () => {
         <Col2
           values={{
             leftText: {
-              text: "1",
+              text: "1.",
               className: "text-4xl text-orange-500 text-center",
             },
             rightTitle: "Prisijunkite",
@@ -53,7 +109,7 @@ const Home = () => {
           values={{
             className: "py-5 bg-gray-200",
             leftText: {
-              text: "2",
+              text: "2.",
               className: "text-4xl text-orange-500 text-center",
             },
             rightTitle: "Susiraskite jums patinkančią treniruotę",
@@ -64,7 +120,7 @@ const Home = () => {
         <Col2
           values={{
             leftText: {
-              text: "3",
+              text: "3.",
               className: "text-4xl text-orange-500 text-center",
             },
             rightTitle: "Viskas!",

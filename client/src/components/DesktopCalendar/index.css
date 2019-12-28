@@ -10,3 +10,11 @@
 .indoor-event {
   background-color: #f788ab;
 }
+
+.road-event {
+  background-color: rgb(63, 142, 252);
+}
+
+.general-event {
+  background-color: #b80791;
+}

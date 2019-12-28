@@ -122,9 +122,9 @@ const ExistingEventForm = () => {
           dateFormat="MMMM d, yyyy HH:mm"
         />
       </div>
-      <button className="mw2 success" onClick={createEvent}>
+      <Button variant="contained" color="primary" onClick={createEvent}>
         Sukurti
-      </button>
+      </Button>
     </div>
   );
 };

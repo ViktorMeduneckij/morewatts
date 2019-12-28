@@ -11,7 +11,7 @@ const Hero = ({ src, overlay, title, subtitle }) => {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    height: isMobile ? "250px" : "500px",
+    height: isMobile ? "200px" : "500px",
   };
   return (
     <div

@@ -18,7 +18,7 @@ const AdminToolbar = ({ addEvent, editEvent, deleteEvent, type }) => {
   };
 
   return (
-    <div className="hidden md:flex items-center py-4 mb-3 container--lg text-white">
+    <div className="flex items-center py-4 mb-3 container--lg text-white">
       {addEvent && (
         <div className="mr-5">
           <Button
