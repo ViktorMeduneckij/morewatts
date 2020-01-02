@@ -13,7 +13,7 @@ const Location = ({ address }) => {
       />
       <a
         href={`https://maps.google.com/?q=${address}`}
-        className="capitalize font-semibold cursor-pointer"
+        className="capitalize font-semibold cursor-pointer underline"
         target="_blank"
         rel="noopener noreferrer"
       >

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 import Cookies from "js-cookie";
 import { Button } from "@material-ui/core";
 
@@ -12,10 +11,12 @@ const Participants = ({ eventId, isMw }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUserSubscribed, setIsUserSubscribed] = useState(false);
   const [shouldDisplayMw, setShouldDisplayMw] = useState(null);
+  const [maxPpl, setMaxPpl] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
   const unsubscribeUrl = `/api/v.1.0/event/unsubscribe/${eventId}/`;
 
-  const userName = "Viktor Meduneckij";
+  const userName = Cookies.get("name");
 
   const fetchParticipants = useCallback(() => {
     fetch("/api/v.1.0/event/" + eventId)
@@ -33,8 +34,25 @@ const Participants = ({ eventId, isMw }) => {
         setIsUserSubscribed(
           data.subscribers.find(item => item.name === userName) ? true : false
         );
+        if (data.maxPeople) {
+          setMaxPpl(data.maxPeople);
+        }
       });
   }, [eventId]);
+
+  const checkIfMaxPpl = () => {
+    if (maxPpl !== false) {
+      if (participants.length >= maxPpl) {
+        participants.forEach(item => {
+          if (item.name === userName) {
+            return null;
+          } else {
+            setDisabled(true);
+          }
+        });
+      }
+    }
+  };
 
   useEffect(() => {
     if (!participants) {
@@ -46,6 +64,8 @@ const Participants = ({ eventId, isMw }) => {
     } else {
       setShouldDisplayMw(true);
     }
+
+    checkIfMaxPpl();
   }, [participants, isMw, shouldDisplayMw, fetchParticipants]);
 
   const handleParticipantsClick = () => {
@@ -101,6 +121,11 @@ const Participants = ({ eventId, isMw }) => {
   return (
     participants && (
       <div className="mt-4 lg:mt-0">
+        {maxPpl && (
+          <div>
+            {participants.length}/{maxPpl} užimta{" "}
+          </div>
+        )}
         {participants.length > 0 &&
           participants.map((sub, index) => (
             <span key={index} className="athlete flex items-center my-2">
@@ -121,7 +146,7 @@ const Participants = ({ eventId, isMw }) => {
               variant="contained"
               color={isUserSubscribed ? "secondary" : "primary"}
               onClick={() => handleParticipantsClick()}
-              disabled={!shouldDisplayMw}
+              disabled={!shouldDisplayMw || disabled}
               style={!shouldDisplayMw ? { pointerEvents: "none" } : {}}
             >
               {isUserSubscribed ? "Apsigalvojau" : "Prisijungsiu"}
@@ -129,6 +154,11 @@ const Participants = ({ eventId, isMw }) => {
           </div>
         ) : (
           <LoadingSpinner />
+        )}
+        {disabled && (
+          <div className="text-red-700 pt-3">
+            Visos vietos į šią treniruotę rezervuotos.
+          </div>
         )}
         {!shouldDisplayMw && (
           <p className="mt-3 text-orange-600">

@@ -11,7 +11,13 @@ const Header = () => {
     <header>
       <div className="container--lg">
         <div className="flex items-center justify-center my-5 text-black">
-          <img src={logo} alt="" style={{ maxWidth: "70px" }} />
+          <img
+            src={logo}
+            alt=""
+            style={{ maxWidth: "70px" }}
+            onClick={handleLogoClick}
+            className="cursor-pointer"
+          />
           <p
             onClick={handleLogoClick}
             style={{

@@ -26,7 +26,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
   const [description, setDescription] = useState(false);
   const [isMw, setIsMw] = useState(false);
   const [level, setLevel] = useState("B");
-
+  const [maxPpl, setMaxPpl] = useState(false);
   const [submitUrl, setSubmitUrl] = useState("/submit-create-event");
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
           setDescription(data.generalInfo);
           setDistance(data.distance);
           setIsMw(data.isMw);
-          console.log(data);
+          setMaxPpl(data.maxPeople);
           setSubmitUrl(`/submit-edit-event/${eventId}`);
         });
     }
@@ -117,7 +117,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
               variant="outlined"
               label="Pavadinimas"
               onChange={e => setTitle(e.target.value)}
-              value={title}
+              value={title || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
@@ -166,7 +166,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
               variant="outlined"
               label="Susitikimo vieta"
               onChange={e => setLocation(e.target.value)}
-              value={location}
+              value={location || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
@@ -175,7 +175,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
               variant="outlined"
               label="Planuojama distancija (km)"
               onChange={e => setDistance(e.target.value)}
-              value={distance}
+              value={distance || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">
@@ -208,12 +208,20 @@ const Bikes = ({ type, isEdit, eventId }) => {
           </div>
           <div className="mt-5 w-full event-form-item">
             <TextField
+              id="maxPpl"
+              placeholder="Maksimalus dalyvių skaičius"
+              onChange={e => setMaxPpl(e.target.value)}
+              value={maxPpl || ""}
+            />
+          </div>
+          <div className="mt-5 w-full event-form-item">
+            <TextField
               placeholder="Trumpas aprašymas"
               multiline={true}
               rows={2}
               rowsMax={4}
               onChange={e => setDescription(e.target.value)}
-              value={description}
+              value={description || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">

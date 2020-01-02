@@ -21,6 +21,7 @@ const Indoor = ({ isEdit, eventId }) => {
   const [location, setLocation] = useState(false);
   const [description, setDescription] = useState(false);
   const [isMw, setIsMw] = useState(false);
+  const [maxPpl, setMaxPpl] = useState(false);
 
   const [submitUrl, setSubmitUrl] = useState("/submit-create-event");
 
@@ -44,6 +45,7 @@ const Indoor = ({ isEdit, eventId }) => {
           setEndTime(new Date(data.end));
           setLocation(data.start_location);
           setDescription(data.generalInfo);
+          setMaxPpl(data.maxPeople);
           setIsMw(data.isMw);
           setSubmitUrl(`/submit-edit-event/${eventId}`);
         });
@@ -63,7 +65,7 @@ const Indoor = ({ isEdit, eventId }) => {
       return;
     }
 
-    fetch("/submit-create-event", {
+    fetch(submitUrl, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -170,6 +172,14 @@ const Indoor = ({ isEdit, eventId }) => {
                 />
               }
               label="Tik MoreWatts"
+            />
+          </div>
+          <div className="mt-5 w-full event-form-item">
+            <TextField
+              id="maxPpl"
+              placeholder="Maksimalus dalyvių skaičius"
+              onChange={e => setMaxPpl(e.target.value)}
+              value={maxPpl || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">

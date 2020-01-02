@@ -27,10 +27,12 @@ export const MW_MEMBERS = [
   {
     id: 1,
     name: "Viktor Meduneckij",
+    admin: true,
   },
   {
     id: 2,
     name: "Donatas Sertvytis",
+    admin: true,
   },
   {
     id: 3,

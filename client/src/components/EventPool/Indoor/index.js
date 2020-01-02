@@ -62,8 +62,10 @@ const Indoor = ({ data }) => {
               <div className="Indoor-info--left pr-6">
                 <Type type={data.type} />
                 <TimeSpan start={data.start} end={data.end} />
-                <Location address={data.start_location} />
-                <Complexity level={data.level} />
+                {data.start_location && (
+                  <Location address={data.start_location} />
+                )}
+                {data.level && <Complexity level={data.level} />}
                 <div className="generalInfo">
                   <p
                     className="text-justify"
@@ -92,7 +94,7 @@ Indoor.propTypes = {
   data: PropTypes.shape({
     allDay: PropTypes.bool,
     city: PropTypes.string,
-    distance: PropTypes.string,
+    distance: PropTypes.number,
     end: PropTypes.string,
     generalInfo: PropTypes.string,
     level: PropTypes.string,

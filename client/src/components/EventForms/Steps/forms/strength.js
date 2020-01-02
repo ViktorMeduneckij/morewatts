@@ -20,6 +20,7 @@ const Strength = ({ isEdit, eventId }) => {
   const [location, setLocation] = useState(false);
   const [description, setDescription] = useState(false);
   const [isMw, setIsMw] = useState(false);
+  const [maxPpl, setMaxPpl] = useState(false);
 
   const [submitUrl, setSubmitUrl] = useState("/submit-create-event");
 
@@ -44,8 +45,7 @@ const Strength = ({ isEdit, eventId }) => {
           setLocation(data.start_location);
           setDescription(data.generalInfo);
           setIsMw(data.isMw);
-
-          console.log(data);
+          setMaxPpl(data.maxPeople);
           setSubmitUrl(`/submit-edit-event/${eventId}`);
         });
     }
@@ -171,6 +171,14 @@ const Strength = ({ isEdit, eventId }) => {
                 />
               }
               label="Tik MoreWatts"
+            />
+          </div>
+          <div className="mt-5 w-full event-form-item">
+            <TextField
+              id="maxPpl"
+              placeholder="Maksimalus dalyvių skaičius"
+              onChange={e => setMaxPpl(e.target.value)}
+              value={maxPpl || ""}
             />
           </div>
           <div className="mt-5 w-full event-form-item">

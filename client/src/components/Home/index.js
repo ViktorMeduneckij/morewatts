@@ -3,12 +3,12 @@ import useEventListener from "@use-it/event-listener";
 import { isMobile } from "react-device-detect";
 import DesktopCalendar from "../DesktopCalendar";
 import MobileCalendar from "../MobileCalendar";
-import Header from "../Header";
 import Col2 from "../Col2";
 import Hero from "../Hero";
 import AdminToolbar from "../AdminToolbar";
 import detectSmallDevice from "../../utils/detectSmallDevice";
 import Stripe from "../../components/Stripe";
+import Footer from "../../components/Footer";
 
 import hero from "../../images/1.png";
 import heroMobile from "../../images/1_mobile.png";
@@ -143,6 +143,7 @@ const Home = () => {
             "Platformos tikslas- suvienyti dviratininkus ir padėti jiems tobulėti sporte. Vasaromis daugiau treniruočių yra orientuotos į dviratį, žiemą stengiamės siprėti visapusiškai bei palaikyti gerą bendrą fizinę formą. Treniruotės yra skirstomos pagal tipus: <ul class='my-2'><strong><li>Bendras fizinis (strength)</li><li>Plentas (Road)</li><li>MTB</li><li>Staklės (indoor)</li><li>Bendrinės (General)</li></strong></ul> Kai kurios treniruotės yra prieinamos tik MoreWatts nariams, jos yra pažymėtos MoreWatts ženklu. Tapti MoreWatts nariu gali kiekvienas, dėl narystės susisiekite su Donatu Šertvytčiu.",
         }}
       />
+      <Footer />
     </>
   );
 };

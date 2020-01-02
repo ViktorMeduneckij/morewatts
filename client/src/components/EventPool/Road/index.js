@@ -32,8 +32,10 @@ const Road = ({ data }) => {
               <div className="Road-info--left pr-6">
                 <Type type={data.type} />
                 <TimeSpan start={data.start} end={data.end} />
-                <Location address={data.start_location} />
-                <Complexity level={data.level} />
+                {data.start_location && (
+                  <Location address={data.start_location} />
+                )}
+                {data.level && <Complexity level={data.level} />}
                 <div className="generalInfo">
                   <p
                     className="text-justify"
