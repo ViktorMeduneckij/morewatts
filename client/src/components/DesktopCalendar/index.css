@@ -1,5 +1,5 @@
 .strength-event {
-  background-color: rgb(245, 230, 99);
+  background-color: rgba(245, 230, 99);
   color: gray;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .road-event {
-  background-color: rgb(63, 142, 252);
+  background-color: rgba(63, 142, 252);
 }
 
 .general-event {

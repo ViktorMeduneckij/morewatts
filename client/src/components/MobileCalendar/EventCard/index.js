@@ -93,7 +93,7 @@ const EventCard = ({ event }) => {
             left: "10px",
             borderTopLeftRadius: "4px",
             borderTopRightRadius: "4px",
-            backgroundColor: "rgb(255, 255, 255, 0.8)",
+            backgroundColor: "rgba(255, 255, 255, 0.8)",
             zIndex: "2",
           }}
         >

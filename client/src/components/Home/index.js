@@ -38,7 +38,7 @@ const Home = () => {
             style={{
               width: "24px",
               height: "24px",
-              backgroundColor: "rgb(63, 142, 252)",
+              backgroundColor: "rgba(63, 142, 252)",
             }}
           ></span>
           <span className="pl-2">Plentas (Road)</span>
@@ -60,7 +60,7 @@ const Home = () => {
             style={{
               width: "24px",
               height: "24px",
-              backgroundColor: "rgb(245, 230, 99)",
+              backgroundColor: "rgba(245, 230, 99)",
             }}
           ></span>
           <span className="pl-2">Salė (Strength)</span>
