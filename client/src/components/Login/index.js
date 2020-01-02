@@ -81,6 +81,7 @@ const Login = () => {
             autoLoad={true}
             fields="name,email"
             callback={responseFacebook}
+            disableMobileRedirect={true}
           />
         </div>
       </div>
