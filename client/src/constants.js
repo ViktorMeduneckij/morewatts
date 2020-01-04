@@ -98,3 +98,28 @@ export const MW_MEMBERS = [
     name: "Ridas Karaška",
   },
 ];
+
+export const MONTH_NAMES = [
+  "Sausio",
+  "Vasario",
+  "Kovo",
+  "Balandžio",
+  "Gegužės",
+  "Birželio",
+  "Liepos",
+  "Rugpjūčio",
+  "Rugsėjo",
+  "Spalio",
+  "Lapkričio",
+  "Gruodžio",
+];
+
+export const DAY_NAMES = [
+  "Sekmadienis",
+  "Pirmadienis",
+  "Antradienis",
+  "Trečiadienis",
+  "Ketvirtadienis",
+  "Penktadienis",
+  "Šeštadienis",
+];

@@ -45,8 +45,12 @@ const Road = ({ data }) => {
                   />
                 </div>
                 <div className="Road-desciption mt-5">
-                  <h3>Apie treniruotes saleje</h3>
-                  <p>{DESCRIPTION}</p>
+                  <h3 className="font-bold">Apie treniruotes plente</h3>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: DESCRIPTION,
+                    }}
+                  />
                 </div>
               </div>
               <div className="Road-info--right" style={{ minWidth: "250px" }}>

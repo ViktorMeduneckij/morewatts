@@ -14,13 +14,13 @@ const Footer = () => (
         href="https://www.facebook.com/morewatts/"
         style={{ width: "30px", height: "30px" }}
       >
-        <img src={Facebook} style={{ maxWidth: "30px" }} />
+        <img src={Facebook} style={{ maxWidth: "30px" }} alt="" />
       </a>
       <a
         href="https://www.instagram.com/morewatts/"
         style={{ width: "30px", height: "30px" }}
       >
-        <img src={Instagram} style={{ maxWidth: "30px" }} />
+        <img src={Instagram} style={{ maxWidth: "30px" }} alt="" />
       </a>
     </div>
     <span className="w-full flex justify-center">

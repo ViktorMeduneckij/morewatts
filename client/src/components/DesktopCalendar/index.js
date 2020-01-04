@@ -15,7 +15,7 @@ const DesktopCalendar = () => {
     if (!data) {
       retrieveData();
     }
-  }, []);
+  });
 
   const retrieveData = () => {
     fetch("/api/v.1.0/events", { mode: "no-cors" })

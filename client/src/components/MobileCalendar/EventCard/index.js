@@ -49,8 +49,9 @@ const EventCard = ({ event }) => {
   };
 
   const convertDate = time => {
-    return moment(time).format("dddd, HH:mm");
+    return moment(time).format("HH:mm");
   };
+
   const countDuration = () => {
     const a = moment(event.start);
     const b = moment(event.end);
@@ -101,7 +102,7 @@ const EventCard = ({ event }) => {
             <span className="font-bold pr-4">{convertDate(event.start)}</span>
             <span
               style={{
-                width: "100px",
+                width: "200px",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",

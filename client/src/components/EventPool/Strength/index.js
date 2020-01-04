@@ -21,6 +21,8 @@ const Strength = ({ data }) => {
     height: isMobile ? "250px" : "500px",
   };
 
+  console.log(data);
+
   return (
     data && (
       <>
@@ -34,7 +36,9 @@ const Strength = ({ data }) => {
             <div className="Strength-info--left pr-6">
               <Type type={data.type} />
               <TimeSpan start={data.start} end={data.end} />
-              <Location address={data.start_location} />
+              {data.start_location && (
+                <Location address={data.start_location} />
+              )}
               <div className="generalInfo">
                 <p
                   className="text-justify"
@@ -44,7 +48,7 @@ const Strength = ({ data }) => {
                 />
               </div>
               <div className="Strength-desciption mt-5">
-                <h3>Apie treniruotes saleje</h3>
+                <h3 className="font-bold">Apie treniruotes salėje</h3>
                 <p>{DESCRIPTION}</p>
               </div>
             </div>

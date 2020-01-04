@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import _ from "lodash";
 
 import EventCard from "./EventCard";
 import emptyCalendar from "../../images/calendar.svg";
+import moment from "moment";
+import { MONTH_NAMES, DAY_NAMES } from "../../constants";
 
 const MobileCalendar = () => {
   const [data, setData] = useState(false);
@@ -48,33 +51,51 @@ const MobileCalendar = () => {
       return false;
     });
 
-    sortedActivities = validEvents.sort(function(a, b) {
+    sortedActivities = validEvents.sort((a, b) => {
       if (a.start < b.start) return -1;
       if (a.start > b.start) return 1;
       return 0;
     });
 
-    setData(sortedActivities);
+    const eventChunks = _.groupBy(sortedActivities, date => {
+      return moment(date.start)
+        .startOf("day")
+        .format();
+    });
+
+    setData(eventChunks);
   };
 
-  return (
-    <div>
-      {data ? (
-        data.map((item, index) => <EventCard key={index} event={item} />)
-      ) : (
-        <span className="text-center text-gray-500 font-medium text-xl">
-          <img
-            src={emptyCalendar}
-            alt=""
-            style={{ maxWidth: "100px" }}
-            className="mx-auto"
-          />
-          <p className="pt-4">
-            Kol kas treniruociu nera, patikrinkite ateityje
-          </p>
-        </span>
-      )}
+  return data ? (
+    <div className="bg-orange-400">
+      <div className="text-center text-white uppercase font-bold py-3 mb-3">
+        Artėjančios treniruotės
+      </div>
+      {Object.keys(data).map((item, index) => (
+        <div key={index}>
+          <div className="py-3 text-center bg-gray-700 text-white uppercase font-bold">{`${
+            MONTH_NAMES[new Date(item).getMonth()]
+          } ${new Date(item).getDate()} (${
+            DAY_NAMES[new Date(item).getDay()]
+          })`}</div>
+          <div>
+            {data[item].map((event, i) => (
+              <EventCard key={i} event={event} />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
+  ) : (
+    <span className="text-center text-gray-500 font-medium text-xl">
+      <img
+        src={emptyCalendar}
+        alt=""
+        style={{ maxWidth: "100px" }}
+        className="mx-auto"
+      />
+      <p className="pt-4">Kol kas treniruociu nera, patikrinkite ateityje</p>
+    </span>
   );
 };
 

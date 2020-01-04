@@ -75,8 +75,12 @@ const Indoor = ({ data }) => {
                   />
                 </div>
                 <div className="Indoor-desciption mt-5">
-                  <h3>Apie staklių treniruotes</h3>
-                  <p>{DESCRIPTION}</p>
+                  <h3 className="font-bold">Apie staklių treniruotes</h3>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: DESCRIPTION,
+                    }}
+                  ></p>
                 </div>
               </div>
               <div className="Indoor-info--right" style={{ minWidth: "250px" }}>

@@ -140,7 +140,7 @@ const Home = () => {
           },
           rightTitle: "MoreWatts treniruotės",
           rightText:
-            "Platformos tikslas- suvienyti dviratininkus ir padėti jiems tobulėti sporte. Vasaromis daugiau treniruočių yra orientuotos į dviratį, žiemą stengiamės siprėti visapusiškai bei palaikyti gerą bendrą fizinę formą. Treniruotės yra skirstomos pagal tipus: <ul class='my-2'><strong><li>Bendras fizinis (strength)</li><li>Plentas (Road)</li><li>MTB</li><li>Staklės (indoor)</li><li>Bendrinės (General)</li></strong></ul> Kai kurios treniruotės yra prieinamos tik MoreWatts nariams, jos yra pažymėtos MoreWatts ženklu. Tapti MoreWatts nariu gali kiekvienas, dėl narystės susisiekite su Donatu Šertvytčiu.",
+            "Platformos tikslas- suvienyti dviratininkus ir padėti jiems tobulėti sporte. Vasaromis daugiau treniruočių yra orientuotos į dviratį, žiemą stengiamės siprėti visapusiškai bei palaikyti gerą bendrą fizinę formą. Treniruotės yra skirstomos pagal tipus: <ul class='my-2'><strong><li>Bendras fizinis (Strength)</li><li>Plentas (Road)</li><li>MTB</li><li>Staklės (Indoor)</li><li>Bendrinės (General)</li></strong></ul> Kai kurios treniruotės yra prieinamos tik MoreWatts nariams, jos yra pažymėtos MoreWatts ženklu. Tapti MoreWatts nariu gali kiekvienas, dėl narystės susisiekite su Donatu Šertvyčiu.",
         }}
       />
       <Footer />
