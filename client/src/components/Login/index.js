@@ -30,9 +30,10 @@ const Login = () => {
     backgroundPosition: "center",
   };
 
-  const attemptMwMember = name => {
+  const attemptMwMember = email => {
     MW_MEMBERS.forEach(item => {
-      if (item.name === name) {
+      console.log(item.email.toLowerCase(), email.toLowerCase());
+      if (item.email.toLowerCase() === email.toLowerCase()) {
         Cookies.set("mw", true);
       } else {
         Cookies.set("mw", false);
@@ -45,7 +46,7 @@ const Login = () => {
       Cookies.set("name", response.name);
       Cookies.set("email", response.email);
       Cookies.set("isLoggedIn", true);
-      attemptMwMember(response.name);
+      attemptMwMember(response.email);
 
       navigate(`/`);
       window.location.reload(false);

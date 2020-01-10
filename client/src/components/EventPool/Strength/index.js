@@ -21,8 +21,6 @@ const Strength = ({ data }) => {
     height: isMobile ? "250px" : "500px",
   };
 
-  console.log(data);
-
   return (
     data && (
       <>

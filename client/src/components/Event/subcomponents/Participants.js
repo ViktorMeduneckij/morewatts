@@ -126,17 +126,30 @@ const Participants = ({ eventId, isMw }) => {
             {participants.length}/{maxPpl} užimta{" "}
           </div>
         )}
-        {participants.length > 0 &&
-          participants.map((sub, index) => (
-            <span key={index} className="athlete flex items-center my-2">
-              <img
-                src={athleteIcon}
-                alt=""
-                style={{ maxWidth: "40px", paddingRight: "5px" }}
-              />
-              <div className="whitespace-no-wrap">{sub.name}</div>
-            </span>
-          ))}
+        {participants.length > 0 && (
+          <>
+            {!maxPpl && (
+              <span
+                className="italic pb-1 mb-1"
+                style={{
+                  borderBottom: "1px solid #e2e8f0",
+                }}
+              >
+                {participants.length} žada dalyvauti
+              </span>
+            )}
+            {participants.map((sub, index) => (
+              <span key={index} className="athlete flex items-center my-2">
+                <img
+                  src={athleteIcon}
+                  alt=""
+                  style={{ maxWidth: "40px", paddingRight: "5px" }}
+                />
+                <div className="whitespace-no-wrap">{sub.name}</div>
+              </span>
+            ))}
+          </>
+        )}
         {participants.length <= 0 && (
           <p className="text-gray-500">Būk pirmas prisijungęs</p>
         )}
