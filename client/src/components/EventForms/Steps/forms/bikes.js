@@ -30,6 +30,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
   const [submitUrl, setSubmitUrl] = useState("/submit-create-event");
 
   useEffect(() => {
+    console.log(maxPpl);
     if (isEdit && !editData) {
       fetch("/api/v.1.0/event/" + eventId)
         .then(function(response) {
@@ -86,6 +87,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
         level: level,
         distance: distance,
         generalInfo: description,
+        maxPeople: maxPpl,
         isMw: isMw,
       }),
     }).then(response => {

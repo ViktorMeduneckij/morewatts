@@ -74,7 +74,7 @@ export const MW_MEMBERS = [
   {
     id: 10,
     name: "Ignas Staskevicius",
-    email: "ignas@stask.com",
+    email: "ignas.stask@gmail.com",
   },
   {
     id: 11,

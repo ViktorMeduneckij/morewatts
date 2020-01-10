@@ -77,6 +77,7 @@ const Strength = ({ isEdit, eventId }) => {
         endDate: new Date(endTime).toISOString(),
         startLocation: location,
         generalInfo: description,
+        maxPeople: maxPpl,
         isMw: isMw,
       }),
     }).then(response => {

@@ -43,13 +43,10 @@ const Participants = ({ eventId, isMw }) => {
   const checkIfMaxPpl = () => {
     if (maxPpl !== false) {
       if (participants.length >= maxPpl) {
-        participants.forEach(item => {
-          if (item.name === userName) {
-            return null;
-          } else {
-            setDisabled(true);
-          }
-        });
+        const doesExist = participants.find(item => item.name === userName);
+        if (!doesExist) {
+          setDisabled(true);
+        }
       }
     }
   };
