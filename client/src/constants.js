@@ -100,6 +100,7 @@ export const MW_MEMBERS = [
   {
     id: 13,
     name: "Pau Li Nis",
+    email: "paulinis@gmail.com",
   },
 
   {

@@ -32,7 +32,6 @@ const Login = () => {
 
   const attemptMwMember = email => {
     MW_MEMBERS.forEach(item => {
-      console.log(item.email.toLowerCase(), email.toLowerCase());
       if (item.email.toLowerCase() === email.toLowerCase()) {
         Cookies.set("mw", true);
       } else {
