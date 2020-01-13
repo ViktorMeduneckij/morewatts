@@ -54,10 +54,13 @@ const Login = () => {
       Cookies.set("email", response.email);
       Cookies.set("isLoggedIn", true);
       if (isMw) {
-        Cookies.set("mw", true);
+        Cookies.set("morewatts", true);
       } else {
-        Cookies.set("mw", false);
+        Cookies.set("morewatts", false);
       }
+
+      navigate(`/`);
+      window.location.reload(false);
     }
   };
 

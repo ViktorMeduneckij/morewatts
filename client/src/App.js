@@ -20,6 +20,8 @@ const App = () => {
     const isAuthed = Cookies.get("isLoggedIn");
     const hasName = Cookies.get("name");
     const hasEmail = Cookies.get("email");
+    const hasMw = Cookies.get("morewatts");
+
     let adminDisplay = false;
 
     const userIsAdmin = MW_MEMBERS.filter(
@@ -31,9 +33,13 @@ const App = () => {
     }
 
     if (!isAdmin) {
-      return isAuthed && hasName && hasEmail ? <Comp {...rest} /> : <Login />;
+      return isAuthed && hasName && hasEmail && hasMw ? (
+        <Comp {...rest} />
+      ) : (
+        <Login />
+      );
     } else {
-      return isAuthed && hasName && hasEmail && adminDisplay ? (
+      return isAuthed && hasName && hasEmail && hasMw && adminDisplay ? (
         <Comp {...rest} />
       ) : (
         <Login />

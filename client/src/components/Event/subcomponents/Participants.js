@@ -57,7 +57,7 @@ const Participants = ({ eventId, isMw }) => {
     }
 
     if (isMw) {
-      setShouldDisplayMw(Cookies.get("mw"));
+      setShouldDisplayMw(Cookies.get("morewatts"));
     } else {
       setShouldDisplayMw(true);
     }
