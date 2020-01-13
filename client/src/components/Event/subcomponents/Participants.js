@@ -156,7 +156,7 @@ const Participants = ({ eventId, isMw }) => {
               variant="contained"
               color={isUserSubscribed ? "secondary" : "primary"}
               onClick={() => handleParticipantsClick()}
-              disabled={!shouldDisplayMw || disabled}
+              disabled={shouldDisplayMw === "false" || disabled}
               style={!shouldDisplayMw ? { pointerEvents: "none" } : {}}
             >
               {isUserSubscribed ? "Apsigalvojau" : "Prisijungsiu"}
@@ -170,7 +170,7 @@ const Participants = ({ eventId, isMw }) => {
             Visos vietos į šią treniruotę rezervuotos.
           </div>
         )}
-        {!shouldDisplayMw && (
+        {shouldDisplayMw === "false" && (
           <p className="mt-3 text-orange-600">
             Ši treniruotė skirta tik MoreWatts nariams.
           </p>

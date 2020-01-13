@@ -31,25 +31,33 @@ const Login = () => {
   };
 
   const attemptMwMember = email => {
-    MW_MEMBERS.forEach(item => {
+    const isMw = MW_MEMBERS.filter(item => {
       if (item.email.toLowerCase() === email.toLowerCase()) {
-        Cookies.set("mw", true);
-      } else {
-        Cookies.set("mw", false);
+        return true;
       }
+
+      return false;
     });
+
+    if (isMw.length <= 0) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   const responseFacebook = response => {
     if (response.name && response.email && response.userID) {
-      console.log(response);
+      const isMw = attemptMwMember(response.email);
+
       Cookies.set("name", response.name);
       Cookies.set("email", response.email);
       Cookies.set("isLoggedIn", true);
-      attemptMwMember(response.email);
-
-      navigate(`/`);
-      window.location.reload(false);
+      if (isMw) {
+        Cookies.set("mw", true);
+      } else {
+        Cookies.set("mw", false);
+      }
     }
   };
 
