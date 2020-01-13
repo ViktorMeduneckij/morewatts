@@ -107,7 +107,7 @@ module.exports.submitEventEditForm = (req, res, next) => {
       (event.start_location = req.body.startLocation),
       (event.distance = req.body.distance),
       (event.generalInfo = req.body.generalInfo),
-      (event.maxPeople = req.body.maxPpl),
+      (event.maxPeople = req.body.maxPeople),
       (event.isMw = req.body.isMw),
       event.save(function(err, savedEvent) {
         if (err) {

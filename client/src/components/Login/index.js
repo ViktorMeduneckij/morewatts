@@ -42,6 +42,7 @@ const Login = () => {
 
   const responseFacebook = response => {
     if (response.name && response.email && response.userID) {
+      console.log(response);
       Cookies.set("name", response.name);
       Cookies.set("email", response.email);
       Cookies.set("isLoggedIn", true);
