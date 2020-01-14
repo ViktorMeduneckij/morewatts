@@ -20,7 +20,6 @@ const App = () => {
     const isAuthed = Cookies.get("isLoggedIn");
     const hasName = Cookies.get("name");
     const hasEmail = Cookies.get("email");
-    const hasMw = Cookies.get("morewatts");
 
     let adminDisplay = false;
 
@@ -33,13 +32,9 @@ const App = () => {
     }
 
     if (!isAdmin) {
-      return isAuthed && hasName && hasEmail && hasMw ? (
-        <Comp {...rest} />
-      ) : (
-        <Login />
-      );
+      return isAuthed && hasName && hasEmail ? <Comp {...rest} /> : <Login />;
     } else {
-      return isAuthed && hasName && hasEmail && hasMw && adminDisplay ? (
+      return isAuthed && hasName && hasEmail && adminDisplay ? (
         <Comp {...rest} />
       ) : (
         <Login />
