@@ -89,7 +89,7 @@ const Login = () => {
           style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
         >
           <FacebookLogin
-            appId="2322663147838853"
+            appId="253683672236382"
             autoLoad={true}
             fields="name,email"
             callback={responseFacebook}
