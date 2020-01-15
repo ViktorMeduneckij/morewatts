@@ -22,7 +22,7 @@ const AdminToolbar = ({ addEvent, editEvent, deleteEvent, type }) => {
   };
 
   useEffect(() => {
-    const userName = Cookies.get("name");
+    const userName = Cookies.get("username");
     const admin = MW_MEMBERS.filter(
       member => member.name === userName && member.admin === true
     );

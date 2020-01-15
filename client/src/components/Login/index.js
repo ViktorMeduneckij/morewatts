@@ -50,9 +50,9 @@ const Login = () => {
     if (response.name && response.email && response.userID) {
       const isMw = attemptMwMember(response.email);
 
-      Cookies.set("name", response.name);
-      Cookies.set("email", response.email);
-      Cookies.set("isLoggedIn", true);
+      Cookies.set("username", response.name);
+      Cookies.set("mail", response.email);
+      Cookies.set("isAuthed", true);
       if (isMw) {
         Cookies.set("morewatts", true);
       } else {

@@ -17,14 +17,14 @@ import "./styles.css";
 
 const App = () => {
   const PrivateRoute = ({ as: Comp, isAdmin, ...rest }) => {
-    const isAuthed = Cookies.get("isLoggedIn");
-    const hasName = Cookies.get("name");
-    const hasEmail = Cookies.get("email");
+    const isAuthed = Cookies.get("isAuthed");
+    const hasName = Cookies.get("username");
+    const hasEmail = Cookies.get("mail");
 
     let adminDisplay = false;
 
     const userIsAdmin = MW_MEMBERS.filter(
-      member => member.name === Cookies.get("name") && member.admin === true
+      member => member.name === Cookies.get("username") && member.admin === true
     );
 
     if (userIsAdmin.length > 0) {
