@@ -19,7 +19,7 @@ const App = () => {
   const PrivateRoute = ({ as: Comp, isAdmin, ...rest }) => {
     const isAuthed = Cookies.get("isAuthed");
     const hasName = Cookies.get("username");
-    const hasEmail = Cookies.get("mail");
+    const hasEmail = Cookies.get("mails");
 
     let adminDisplay = false;
 

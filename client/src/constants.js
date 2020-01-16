@@ -129,6 +129,11 @@ export const MW_MEMBERS = [
     name: "Vidmantas Banys",
     email: "vydmab@gmail.com",
   },
+  {
+    id: 18,
+    name: "Vidmantas Banys",
+    email: "vidmantas_hnmjjlg_banys@tfbnw.net",
+  },
 ];
 
 export const MONTH_NAMES = [
