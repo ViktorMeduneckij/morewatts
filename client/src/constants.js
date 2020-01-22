@@ -139,6 +139,11 @@ export const MW_MEMBERS = [
     name: "Henrikas Ramonas",
     email: "henrikas_hkkrxqs_ramonas@tfbnw.net",
   },
+  {
+    id: 20,
+    name: "Donatas Paplauskas",
+    email: "d.paplauskas@yahoo.com",
+  },
 ];
 
 export const MONTH_NAMES = [
