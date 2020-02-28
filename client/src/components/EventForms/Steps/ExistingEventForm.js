@@ -61,7 +61,7 @@ const ExistingEventForm = () => {
         speed: event.speed,
         generalInfo: event.generalInfo,
         markers: event.markers,
-        maxPpl: event.maxPpl,
+        maxPpl: event.maxPeople,
         isMw: event.isMw,
       }),
     })
