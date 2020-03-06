@@ -80,6 +80,12 @@ const DesktopCalendar = () => {
   const maxTime = new Date();
   maxTime.setHours(20, 0, 0);
 
+  moment.locale("lt", {
+    week: {
+      dow: 1,
+    },
+  });
+
   return (
     data && (
       <div className="DesktopCalendar container--lg">

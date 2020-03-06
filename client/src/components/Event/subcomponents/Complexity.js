@@ -11,8 +11,9 @@ const Complexity = ({ level }) => {
         alt=""
         style={{ width: "30px", marginRight: "5px" }}
       />
-      <div className="Level">
-        <span className="capitalize font-semibold">{level}</span>
+      <div className="Level flex">
+        <span className="capitalize font-semibold mr-1">{level}</span>
+        <span>sunkumas</span>
       </div>
     </div>
   );

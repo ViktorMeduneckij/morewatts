@@ -7,9 +7,10 @@ import Participants from "../../Event/subcomponents/Participants";
 import TimeSpan from "../../Event/subcomponents/TimeSpan";
 import Complexity from "../../Event/subcomponents/Complexity";
 import { DESCRIPTION } from "./description.js";
+import Distance from "../../Event/subcomponents/Distance";
 import Stripe from "../../Stripe";
 
-const plentoTrefkeBg = require("../../../images/salesTrefke.png");
+const plentoTrefkeBg = require("../../../images/road-banner.jpg");
 
 const Road = ({ data }) => {
   const heroStyle = {
@@ -35,6 +36,7 @@ const Road = ({ data }) => {
                 {data.start_location && (
                   <Location address={data.start_location} />
                 )}
+                {data.distance && <Distance distance={data.distance} />}
                 {data.level && <Complexity level={data.level} />}
                 <div className="generalInfo">
                   <p
