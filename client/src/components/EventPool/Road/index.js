@@ -70,7 +70,7 @@ Road.propTypes = {
   data: PropTypes.shape({
     allDay: PropTypes.bool,
     city: PropTypes.string,
-    distance: PropTypes.string,
+    distance: PropTypes.number,
     end: PropTypes.string,
     generalInfo: PropTypes.string,
     level: PropTypes.string,
