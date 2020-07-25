@@ -2,14 +2,12 @@ import React from "react";
 import { Router } from "@reach/router";
 import Home from "./components/Home";
 import Event from "./components/Event";
-import Login from "./components/Login";
 import Cookies from "js-cookie";
 import EventForms from "./components/EventForms";
 import ExistingEventForm from "./components/EventForms/Steps/ExistingEventForm";
 import NewEvent from "./components/EventForms/Steps/NewEvent";
 import EditEvent from "./components/EventForms/Steps/EditEvent";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import { MW_MEMBERS } from "./constants";
 
 import "./global.css";
 import "normalize.css";
@@ -17,38 +15,25 @@ import "./styles.css";
 
 const App = () => {
   const PrivateRoute = ({ as: Comp, isAdmin, ...rest }) => {
-    const isAuthed = Cookies.get("isAuthed");
-    const hasName = Cookies.get("username");
-    const hasEmail = Cookies.get("mails");
-
-    let adminDisplay = false;
-
-    const userIsAdmin = MW_MEMBERS.filter(
-      member => member.name === Cookies.get("username") && member.admin === true
-    );
-
-    if (userIsAdmin.length > 0) {
-      adminDisplay = true;
-    }
+    const userIsAdmin = Cookies.get("isAdmin");
 
     if (!isAdmin) {
-      return isAuthed && hasName && hasEmail ? <Comp {...rest} /> : <Login />;
+      return <Comp {...rest} />
     } else {
-      return isAuthed && hasName && hasEmail && adminDisplay ? (
+      return userIsAdmin ? (
         <Comp {...rest} />
       ) : (
-        <Login />
-      );
+          <Home />
+        );
     }
   };
 
   return (
     <>
       <Router>
-        <Login path="/login" />
         <PrivacyPolicy path="/privacy-policy" />
-        <PrivateRoute as={Home} path="/" />
-        <PrivateRoute as={Event} path="/event/:id" />
+        <Home path="/" />
+        <Event path="/event/:id" />
         <PrivateRoute as={EventForms} path="/event/add" isAdmin />
         <PrivateRoute
           as={ExistingEventForm}
