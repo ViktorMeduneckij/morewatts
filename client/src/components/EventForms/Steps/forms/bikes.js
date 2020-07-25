@@ -32,7 +32,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
   useEffect(() => {
     if (isEdit && !editData) {
       fetch("/api/v.1.0/event/" + eventId)
-        .then(function(response) {
+        .then(function (response) {
           if (!response.ok) {
             console.log("Failed to get single event.");
             return;
@@ -105,7 +105,7 @@ const Bikes = ({ type, isEdit, eventId }) => {
       </Button>
       <h1 className="text-center">{`Kuriame dviraciu (${type})  treniruote`}</h1>
       {error && (
-        <p className=" bg-red-300 p-3 text-xl text-red-700 font-bold">
+        <p className="bg-red-300 p-3 text-xl text-red-700 font-bold">
           {error}
         </p>
       )}

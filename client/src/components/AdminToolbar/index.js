@@ -7,7 +7,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Cookies from "js-cookie";
-import { MW_MEMBERS } from "../../constants";
 
 const AdminToolbar = ({ addEvent, editEvent, deleteEvent, type }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -22,18 +21,15 @@ const AdminToolbar = ({ addEvent, editEvent, deleteEvent, type }) => {
   };
 
   useEffect(() => {
-    const userName = Cookies.get("username");
-    const admin = MW_MEMBERS.filter(
-      member => member.name === userName && member.admin === true
-    );
+    const isAdmin = Cookies.get("isAdmin");
 
-    if (admin.length > 0) {
+
+    if (isAdmin) {
       setDisplay(true);
     }
   });
 
   return (
-    display == true &&
     display === true && (
       <div className="flex items-center py-4 mb-3 container--lg text-white">
         {addEvent && (
