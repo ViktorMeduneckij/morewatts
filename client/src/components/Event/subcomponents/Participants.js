@@ -24,7 +24,7 @@ const Participants = ({ eventId, isMw }) => {
   const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
   const unsubscribeUrl = `/api/v.1.0/event/unsubscribe/${eventId}/`;
 
-  const userName = Cookies.get("username");
+  const userName = Cookies.get("username").toLocaleLowerCase();
 
   const fetchParticipants = useCallback(() => {
     fetch("/api/v.1.0/event/" + eventId)
@@ -86,12 +86,19 @@ const Participants = ({ eventId, isMw }) => {
   };
 
   const triggerSubscribe = url => {
-    const userExists = participants.find(item => item.name === userDefinedName || item.name === userName.toLocaleLowerCase())
+    let userExists;
+    if (userDefinedName) {
+      userExists = participants.find(item => (item.name).toLocaleLowerCase() === userDefinedName.toLocaleLowerCase())
+    } else if (userName) {
+      userExists = participants.find(item => (item.name).toLocaleLowerCase() === userName.toLocaleLowerCase())
+    }
 
     if (userExists && url === subscribeUrl) {
       setError('Toks dalyvis jau registruotas.');
     } else {
       Cookies.set('username', userDefinedName || userName);
+
+      const preparedUsername = (userDefinedName || userName).toLocaleLowerCase()
 
       if (isLoading === false) {
         setIsLoading(true);
@@ -102,7 +109,7 @@ const Participants = ({ eventId, isMw }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            userName: userDefinedName || userName,
+            userName: preparedUsername,
           }),
         })
           .then(response => {
@@ -203,7 +210,7 @@ const Participants = ({ eventId, isMw }) => {
       <Modal open={displayModal} onClose={() => setDisplayModal(false)} center>
         <div className="p-4">
           <p>Norėdami prisijungti, turite nurodyti savo vardą ir pavardę(arba pirmą pavardės raidę).</p>
-          <div className="my-5 w-full event-form-item">
+          <div className="my-5 w-full event-form-item capitalize">
             <TextField
               id="name"
               variant="outlined"
