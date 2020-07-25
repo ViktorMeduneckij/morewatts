@@ -24,7 +24,10 @@ const Participants = ({ eventId, isMw }) => {
   const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
   const unsubscribeUrl = `/api/v.1.0/event/unsubscribe/${eventId}/`;
 
-  const userName = Cookies.get("username").toLocaleLowerCase();
+  let userName;
+  if (Cookies.get("username")) {
+    userName = Cookies.get("username").toLocaleLowerCase()
+  };
 
   const fetchParticipants = useCallback(() => {
     fetch("/api/v.1.0/event/" + eventId)
