@@ -23,7 +23,7 @@ module.exports.getEvent = (req, res) => {
 };
 
 module.exports.subscribe = (req, res) => {
-  const subscriber = { name: req.body.userName };
+  const subscriber = { name: req.body.userName, phone: req.body.phone };
   eventModel.event.findByIdAndUpdate(
     { _id: req.params.id },
     { $push: { subscribers: subscriber } },
