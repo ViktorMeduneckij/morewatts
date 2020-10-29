@@ -6,7 +6,7 @@ import duration from "../../../images/duration.svg";
 import subscriber from "../../../images/subscriber.svg";
 import salesBg from "../../../images/salesTrefke.png";
 import roadBg from "../../../images/road-banner.jpg";
-import mtbBg from "../../../images/salesTrefke.png";
+import mtbBg from "../../../images/mtb-banner.png";
 import indoorBg from "../../../images/stakliuTrefke.jpg";
 import mwBadge from "../../../images/mw_badge.png";
 
@@ -21,7 +21,7 @@ const EventCard = ({ event }) => {
   });
 
   const resovleEventProps = () => {
-    switch (event.type) {
+    switch (event.type.toLowerCase()) {
       case "strength":
         setBgImage(salesBg);
         setEventColor("#FDB713");

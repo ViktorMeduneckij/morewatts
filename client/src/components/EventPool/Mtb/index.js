@@ -9,7 +9,7 @@ import Complexity from "../../Event/subcomponents/Complexity";
 import { DESCRIPTION } from "./description.js";
 import Stripe from "../../Stripe";
 
-const mtbTrefkeBg = require("../../../images/salesTrefke.png");
+const mtbTrefkeBg = require("../../../images/mtb-banner.png");
 
 const Mtb = ({ data }) => {
   const heroStyle = {

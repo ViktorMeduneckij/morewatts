@@ -32,7 +32,7 @@ const Event = () => {
           return;
         }
         setData(data);
-        setType(data.type);
+        setType(data.type.toLowerCase());
       });
   };
 

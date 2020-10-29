@@ -11,14 +11,9 @@ const Location = ({ address }) => {
         alt=""
         style={{ width: "30px", marginRight: "5px" }}
       />
-      <a
-        href={`https://maps.google.com/?q=${address}`}
-        className="capitalize font-semibold cursor-pointer underline"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <div>
         {address}
-      </a>
+      </div>
     </div>
   );
 };

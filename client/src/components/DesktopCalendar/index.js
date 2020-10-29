@@ -51,7 +51,7 @@ const DesktopCalendar = () => {
   };
 
   const eventStyleGetter = (event, start, end, isSelected) => {
-    switch (event.type) {
+    switch (event.type.toLowerCase()) {
       case "strength":
         return {
           className: "strength-event",
