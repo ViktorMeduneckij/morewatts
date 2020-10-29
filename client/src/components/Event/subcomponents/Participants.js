@@ -19,6 +19,7 @@ const Participants = ({ eventId, isMw }) => {
   const [maxPpl, setMaxPpl] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [userDefinedName, setUserName] = useState(false);
+  const [userDefinedPhone, setPhone] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
   const [formError, setError] = useState(false);
   const subscribeUrl = `/api/v.1.0/event/subscribe/${eventId}/`;
@@ -113,6 +114,7 @@ const Participants = ({ eventId, isMw }) => {
           },
           body: JSON.stringify({
             userName: preparedUsername,
+            phone: userDefinedPhone,
           }),
         })
           .then(response => {
@@ -220,6 +222,15 @@ const Participants = ({ eventId, isMw }) => {
               label="Vardas"
               onChange={e => setUserName(e.target.value)}
               value={userDefinedName || userName || ""}
+            />
+          </div>
+          <div className="my-5 w-full event-form-item capitalize">
+            <TextField
+              id="phone"
+              variant="outlined"
+              label="Telefono numeris (privalome saugoti del COVID-19"
+              onChange={e => setPhone(e.target.value)}
+              value={userDefinedPhone || ""}
             />
           </div>
           {formError && (
