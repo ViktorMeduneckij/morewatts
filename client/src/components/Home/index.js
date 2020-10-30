@@ -125,7 +125,7 @@ const Home = () => {
             },
             rightTitle: "Viskas!",
             rightText:
-              "Džiaugiamės, kad prisijungėt! Iki susitikimo treniruotėje. Jei kartais persigalvosite, atsižymėkit iš sąrašo, tai mums padeda visuomet žinoti tikslų dalyviu skaičių ir taip palaikyti aukštą treniruočių kokybę.",
+              "Džiaugiamės, kad prisijungėt! Iki susitikimo treniruotėje.",
           }}
         />
       </div>
