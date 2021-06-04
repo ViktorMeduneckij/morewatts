@@ -7,6 +7,7 @@ import EventForms from "./components/EventForms";
 import ExistingEventForm from "./components/EventForms/Steps/ExistingEventForm";
 import NewEvent from "./components/EventForms/Steps/NewEvent";
 import EditEvent from "./components/EventForms/Steps/EditEvent";
+import Login from "./components/Login";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 
 import "./global.css";
@@ -42,6 +43,7 @@ const App = () => {
         />
         <PrivateRoute as={NewEvent} path="/new-event/:type" isAdmin />
         <PrivateRoute as={EditEvent} path="/event/edit/:id" isAdmin />
+        <Login path="/login" />
       </Router>
     </>
   );

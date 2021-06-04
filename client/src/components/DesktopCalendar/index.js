@@ -19,14 +19,14 @@ const DesktopCalendar = () => {
 
   const retrieveData = () => {
     fetch("/api/v.1.0/events", { mode: "no-cors" })
-      .then(function(response) {
+      .then(function (response) {
         if (!response.ok) {
           console.log("Something is wrong");
           return;
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         if (!data) {
           return;
         }
@@ -34,8 +34,8 @@ const DesktopCalendar = () => {
       });
   };
 
-  const parseEvents = events => {
-    events.map(event => {
+  const parseEvents = (events) => {
+    events.map((event) => {
       const eventStart = new Date(event.start);
       const eventEnd = new Date(event.end);
 
@@ -46,7 +46,7 @@ const DesktopCalendar = () => {
     setData(events);
   };
 
-  const handleEventClick = event => {
+  const handleEventClick = (event) => {
     navigate(`/event/${event._id}`);
   };
 
@@ -67,6 +67,10 @@ const DesktopCalendar = () => {
       case "indoor":
         return {
           className: "indoor-event",
+        };
+      case "child":
+        return {
+          className: "child-event",
         };
       default:
         return {

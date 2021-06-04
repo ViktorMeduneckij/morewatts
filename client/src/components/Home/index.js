@@ -82,6 +82,17 @@ const Home = () => {
             style={{
               width: "24px",
               height: "24px",
+              backgroundColor: "#ff8d00",
+            }}
+          ></span>
+          <span className="pl-2">Jaunimo</span>
+        </div>
+        <div className="flex items-center px-2">
+          <span
+            className="block"
+            style={{
+              width: "24px",
+              height: "24px",
               backgroundColor: "#b80791",
             }}
           ></span>

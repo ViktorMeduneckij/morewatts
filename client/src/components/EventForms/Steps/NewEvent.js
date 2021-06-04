@@ -5,6 +5,7 @@ import "./index.css";
 import Bikes from "./forms/bikes";
 import Strength from "./forms/strength";
 import Indoor from "./forms/indoor";
+import Child from "./forms/child";
 
 const NewEvent = () => {
   const [type, setType] = useState(window.location.pathname.split("/").pop());
@@ -26,6 +27,10 @@ const NewEvent = () => {
           setFormNeeded("indoor");
           break;
 
+        case "child":
+          setFormNeeded("child");
+          break;
+
         default:
           setFormNeeded("bikes");
       }
@@ -42,6 +47,10 @@ const NewEvent = () => {
 
   if (formNeeded === "indoor") {
     return <Indoor />;
+  }
+
+  if (formNeeded === "child") {
+    return <Child />;
   }
 
   return null;

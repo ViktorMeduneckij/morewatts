@@ -42,13 +42,18 @@ const EventCard = ({ event }) => {
         setEventColor("#f788ab");
         break;
 
+      case "child":
+        setBgImage(roadBg);
+        setEventColor("#ff8d00");
+        break;
+
       default:
         setBgImage(salesBg);
         setEventColor("#FDB713");
     }
   };
 
-  const convertDate = time => {
+  const convertDate = (time) => {
     return moment(time).format("HH:mm");
   };
 

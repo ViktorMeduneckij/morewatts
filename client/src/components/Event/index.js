@@ -6,6 +6,7 @@ import Strength from "../EventPool/Strength";
 import Road from "../EventPool/Road";
 import Mtb from "../EventPool/Mtb";
 import Indoor from "../EventPool/Indoor";
+import Child from "../EventPool/Child";
 import AdminToolbar from "../AdminToolbar";
 
 const Event = () => {
@@ -49,6 +50,9 @@ const Event = () => {
 
       case "indoor":
         return <Indoor data={data} />;
+
+      case "child":
+        return <Child data={data} />
 
       default:
         return <Strength data={data} />;

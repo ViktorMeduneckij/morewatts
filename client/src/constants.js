@@ -17,6 +17,10 @@ export const EVENT_TYPES = [
   },
   {
     id: 5,
+    name: "Child",
+  },
+  {
+    id: 6,
     name: "General",
   },
 ];

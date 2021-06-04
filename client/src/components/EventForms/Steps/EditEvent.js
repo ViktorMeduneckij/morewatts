@@ -5,6 +5,7 @@ import "./index.css";
 import Bikes from "./forms/bikes";
 import Strength from "./forms/strength";
 import Indoor from "./forms/indoor";
+import Child from "./forms/child";
 
 const EditEvent = () => {
   const [eventId, setEventId] = useState(
@@ -32,6 +33,10 @@ const EditEvent = () => {
           setFormNeeded("indoor");
           break;
 
+          case "child":
+            setFormNeeded("child");
+            break;
+
         default:
           setFormNeeded("bikes");
       }
@@ -48,6 +53,10 @@ const EditEvent = () => {
 
   if (formNeeded === "indoor" && eventId) {
     return <Indoor eventId={eventId} isEdit />;
+  }
+
+  if (formNeeded === "child" && eventId) {
+    return <Child eventId={eventId} isEdit />;
   }
 
   return null;

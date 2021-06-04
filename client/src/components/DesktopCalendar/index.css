@@ -11,6 +11,10 @@
   background-color: #f788ab;
 }
 
+.child-event {
+  background-color: rgba(255, 141, 0, 1);
+}
+
 .road-event {
   background-color: rgba(63, 142, 252);
 }
